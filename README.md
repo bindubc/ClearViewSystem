@@ -57,3 +57,10 @@ ClearView's HR platform leverages AI to construct personalized, data-driven cand
 ### Problem Statements
 * __Lack of Impactful Metrics__: Identifying and reducing bias in the candidate hiring and interview process is challenging, as current systems lack actionable data to measure and address bias effectively.
 * __Ineffective ATS__: Traditional applicant tracking systems often redundantly fail to match viable candidates to job descriptions, resulting in missed opportunities and inefficient hiring.
+
+### Component Analysis:
+*  Frontend
+     => We take only required Clients. ( Mobile, Web) => Assumption 
+*  Backend
+    * LLM Component => Assumption 
+    * Resume Management Service
