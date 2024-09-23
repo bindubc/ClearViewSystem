@@ -37,3 +37,14 @@ The ClearView platform's primary use cases are listed below, showcasing a range 
  #### 4. Security and Compliance Use Cases
 * __Ensure Data Privacy__: The platform implements data protection measures to comply with regulations (e.g., GDPR).
 * __Monitor Access Controls__ : Administrators monitor and manage access controls to ensure only authorized users can view sensitive data.
+
+
+#### 5. DEI Consultant Use Cases
+* __Shadow Interviews__: DEI consultants observe interviews to provide real-time feedback on interviewer behavior.
+* __Analyze Interview Practices__: Consultants analyze interview feedback and practices to recommend improvements.
+* __Report Findings__: Consultants compile findings and present reports to executive management on bias reduction.
+
+#### Analytics Use Cases
+* __Track Hiring Metrics__ : The platform aggregates data to analyze hiring trends, demographic disparities, and process efficiency.
+* __Identify Bias Patterns__: Analytics tools identify patterns of bias in hiring decisions, providing actionable insights for improvement.
+* __Benchmark Performance__: Employers can benchmark their hiring performance against industry standards.
