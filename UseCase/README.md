@@ -1,3 +1,15 @@
+
+The ClearView platform's primary use cases are listed below, showcasing a range of interactions and features for various user roles:
+
+### Users
+* __Employers__: Companies seeking a bias-reducing, equitable hiring process.
+* __Job Candidates__: Professionals seeking a more transparent and fair hiring process that values skills over personal characteristics.
+* __Administrators__: Platform managers overseeing registrations, data analytics, and solution-building services with executives.
+
+### Use-Cases
+---
+
+
 #### Employer Use Cases
 
 * __Employer Registration__: Employers register on the platform by creating an account, filling up the corporate details, and choosing user roles.
