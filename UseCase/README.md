@@ -34,6 +34,6 @@ The ClearView platform's primary use cases are listed below, showcasing a range 
 * __Generate System Reports__: Administrators generate reports on platform usage, user statistics, and bias metrics.
 *  __Handle Support Requests__: Administrators respond to user queries and issues related to the platform.
 
- ### Security and Compliance Use Cases
+ #### Security and Compliance Use Cases
 * __Ensure Data Privacy__: The platform implements data protection measures to comply with regulations (e.g., GDPR).
 * __Monitor Access Controls__ : Administrators monitor and manage access controls to ensure only authorized users can view sensitive data.
