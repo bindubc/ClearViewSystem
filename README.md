@@ -21,7 +21,7 @@ This repository contains team's submission to O'Reilly's [Architectural Katas: F
 
 Welcome to the architectural story of ClearView - the O'Reilly Fall 2024 Architectural Kata.
 
-## Company Overiew
+### Company Overiew
 
 The Diversity Cyber Council is a non-profit organization dedicated to increasing diversity and inclusion within the tech industry. Its primary focus is on underrepresented demographics, aiming to provide them with access to education, training, and job placement opportunities. Here’s a breakdown of its key components:
 
