@@ -62,6 +62,9 @@ ClearView's HR platform leverages AI to construct personalized, data-driven cand
 
 These components form a cohesive architecture for the ClearView platform, enabling it to support user registration, resume processing, job matching, interview management, analytics, and compliance requirements. Each component is designed to be modular, ensuring easy maintenance and scalability.
 
+![image](https://github.com/user-attachments/assets/eb99a1ba-c2af-4cb1-a473-f88ae0bab0e6)
+
+
 #####  User Management Components
 1. Authentication Service :  Handles user authentication and authorization.
 2. User Profile Service:  Manages user profiles and account settings.
@@ -101,4 +104,58 @@ These components form a cohesive architecture for the ClearView platform, enabli
 2. Service Registry: Manages discovery of microservices.
 3. Logging and Monitoring Service: Centralizes logging and monitoring for all components.
 
+## Identifying architecture characteristics
+   
+Choosing the right architectural characteristics is a critical process that lays the foundation for designing an effective architecture and defining efficient data flow within a system. By carefully considering these characteristics, one can determine the most suitable software and hardware components to effectively fulfill the system requirements. This ensures not only the proper functioning of the system but also its scalability, maintainability, and overall performance. Based on the requirements and our expertise, the following top three characteristics have been identified:
+
+![image](https://github.com/user-attachments/assets/bb7da18d-a07e-40cb-9abd-84f148c0c160)
+
+
+1. **Microservices Architecture**
+   - **Use Case**: The platform can independently update the **Job Management Service** without affecting the **User Management Service**. If a new feature is added to job postings, it can be deployed without downtime for other services.
+
+2. **High Availability**
+   - **Use Case**: During peak hiring seasons, the platform must remain operational for both candidates and employers. Load balancers ensure that traffic is distributed across multiple instances of services, preventing downtime.
+
+3. **Scalability**
+   - **Use Case**: If the platform experiences a sudden increase in job postings or candidate registrations, additional instances of the **Notification Service** can be spun up to handle the increased load without affecting performance.
+
+4. **Modularity**
+   - **Use Case**: The **Resume Processing Service** can be modified to use a different AI algorithm for parsing resumes without impacting the **Interview Management Service** or other components.
+
+5. **Interoperability**
+   - **Use Case**: ClearView integrates with third-party authentication services (like **Auth0**) and external AI tools to enhance resume matching capabilities, allowing smooth communication and data exchange.
+
+6. **Data Consistency**
+   - **Use Case**: When a candidate is hired, the **User Management Service** and **Interview Management Service** must reflect this change consistently to avoid discrepancies in user status.
+
+7. **Robust Security**
+   - **Use Case**: Sensitive candidate data is protected through encryption during transmission and storage, ensuring that information remains confidential and compliant with regulations like GDPR.
+
+8. **Event-Driven Communication**
+   - **Use Case**: When a candidate applies for a job, an event is published to the message queue, triggering notifications to the hiring manager and updating the dashboard in real-time.
+
+9. **Resilience and Fault Tolerance**
+   - **Use Case**: If the **Notification Service** encounters an error, the system can automatically retry sending notifications without affecting the overall application’s functionality.
+
+10. **Observability**
+    - **Use Case**: The **Monitoring Service** tracks system performance and alerts administrators of unusual activity (e.g., high latency), enabling quick identification and resolution of issues.
+
+11. **Performance Optimization**
+    - **Use Case**: Caching frequently accessed job postings can significantly reduce response times for users viewing job listings, enhancing the user experience.
+
+12. **Continuous Integration and Deployment (CI/CD)**
+    - **Use Case**: New features or bug fixes can be deployed quickly through automated pipelines, allowing the platform to respond rapidly to user feedback or changing requirements.
+
+13. **API-First Design**
+    - **Use Case**: Mobile applications or third-party integrations can interact seamlessly with the platform using a consistent set of APIs, ensuring that all clients receive the same data and functionality.
+
+14. **User-Centric Design**
+    - **Use Case**: The interface of the **Candidate Web App** is designed based on user feedback, ensuring that candidates can easily navigate the application, upload resumes, and apply for jobs without confusion.
+
+15. **Compliance and Regulatory Considerations**
+    - **Use Case**: The platform ensures that all data handling processes are compliant with employment laws and data privacy regulations, providing necessary audit trails and user consent management.
+
+### **Summary**
+These architectural characteristics are essential for ensuring that the ClearView platform is robust, efficient, and user-friendly. By aligning these characteristics with specific use cases, the platform can better meet the needs of its users while adapting to changes in the job market and technology landscape. If you need more details or specific examples, feel free to ask!
 
