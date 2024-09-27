@@ -53,6 +53,7 @@ ClearView's HR platform leverages AI to construct personalized, data-driven cand
 
 
 <div id="Requirements"></div>
+
 ### Key Features and Requirements
 
 
@@ -112,8 +113,8 @@ These components form a cohesive architecture for the ClearView platform, enabli
 2. Service Registry: Manages discovery of microservices.
 3. Logging and Monitoring Service: Centralizes logging and monitoring for all components.
 
-<div id="characteristics">
-  <a name="characteristics"></a>
+
+<a name="characteristics"></a>
 ## Identifying architecture characteristics
    
 Choosing the right architectural characteristics is a critical process that lays the foundation for designing an effective architecture and defining efficient data flow within a system. By carefully considering these characteristics, one can determine the most suitable software and hardware components to effectively fulfill the system requirements. This ensures not only the proper functioning of the system but also its scalability, maintainability, and overall performance. Based on the requirements and our expertise, the following top three characteristics have been identified:
@@ -161,4 +162,4 @@ Choosing the right architectural characteristics is a critical process that lays
     - **Use Case**: The platform ensures that all data handling processes are compliant with employment laws and data privacy regulations, providing necessary audit trails and user consent management.
 
 These architectural characteristics are essential for ensuring that the ClearView platform is robust, efficient, and user-friendly. By aligning these characteristics with specific use cases, the platform can better meet the needs of its users while adapting to changes in the job market and technology landscape. If you need more details or specific examples, feel free to ask!
-</div>
+
