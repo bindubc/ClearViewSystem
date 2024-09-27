@@ -144,18 +144,8 @@ Choosing the right architectural characteristics is a critical process that lays
 11. **Performance Optimization**
     - **Use Case**: Caching frequently accessed job postings can significantly reduce response times for users viewing job listings, enhancing the user experience.
 
-12. **Continuous Integration and Deployment (CI/CD)**
-    - **Use Case**: New features or bug fixes can be deployed quickly through automated pipelines, allowing the platform to respond rapidly to user feedback or changing requirements.
-
-13. **API-First Design**
-    - **Use Case**: Mobile applications or third-party integrations can interact seamlessly with the platform using a consistent set of APIs, ensuring that all clients receive the same data and functionality.
-
-14. **User-Centric Design**
-    - **Use Case**: The interface of the **Candidate Web App** is designed based on user feedback, ensuring that candidates can easily navigate the application, upload resumes, and apply for jobs without confusion.
-
-15. **Compliance and Regulatory Considerations**
+12. **Compliance and Regulatory Considerations**
     - **Use Case**: The platform ensures that all data handling processes are compliant with employment laws and data privacy regulations, providing necessary audit trails and user consent management.
 
-### **Summary**
 These architectural characteristics are essential for ensuring that the ClearView platform is robust, efficient, and user-friendly. By aligning these characteristics with specific use cases, the platform can better meet the needs of its users while adapting to changes in the job market and technology landscape. If you need more details or specific examples, feel free to ask!
 
