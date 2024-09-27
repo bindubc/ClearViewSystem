@@ -59,8 +59,46 @@ ClearView's HR platform leverages AI to construct personalized, data-driven cand
 * __Ineffective ATS__: Traditional applicant tracking systems often redundantly fail to match viable candidates to job descriptions, resulting in missed opportunities and inefficient hiring.
 
 ### Component Analysis:
-*  Frontend
-     => We take only required Clients. ( Mobile, Web) => Assumption 
-*  Backend
-    * LLM Component => Assumption 
-    * Resume Management Service
+
+These components form a cohesive architecture for the ClearView platform, enabling it to support user registration, resume processing, job matching, interview management, analytics, and compliance requirements. Each component is designed to be modular, ensuring easy maintenance and scalability.
+
+#####  User Management Components
+1. Authentication Service :  Handles user authentication and authorization.
+2. User Profile Service:  Manages user profiles and account settings.
+3. Role Management Service : Defines permissions for each type of user (Employer, Candidate, Admin, DEI Consultant).
+
+##### Resume Processing Components
+1. Resume Upload Service:  Manages the resume upload process.
+2. Resume Anonymization Service : Anonymizes candidate resumes to remove personal identifiable information (PII).
+3. Resume Analysis Service : Analyzes resumes and generates structured data.
+
+#####  Job Management Components
+1. Job Listing Service: Manages job listings posted by employers.
+2. Job Matching Service : Matches candidate profiles to job listings using AI.
+3. Candidate Management Service : Manages candidate applications for job postings.
+
+#####  Interview Management Components
+1. Interview Scheduling Service: Manages scheduling of interviews between employers and candidates.
+2. Interview Feedback Service: Collects and manages feedback from interviewers and candidates.
+
+#####  Analytics and Reporting Components
+1. Data Aggregation Servic: Aggregates data from various sources for reporting.
+2. Report Generation Service:Generates reports for different stakeholders.
+3. Dashboard Service: Provides an interactive dashboard for real-time insights.
+
+#####  Notification and Communication Components
+1. Notification Service: Manages notifications and alerts.
+2. Messaging Service: Enables communication between candidates and employers.
+
+#####  Admin and Compliance Components
+1. User Activity Monitoring Service: Monitors user activity and generates logs.
+2. Compliance and Security Service: Manages compliance with data protection regulations.
+3. Role-Based Access Control (RBAC) Service: Manages permissions based on user roles.
+
+
+##### Platform Services
+1. API Gateway: Manages communication between microservices.
+2. Service Registry: Manages discovery of microservices.
+3. Logging and Monitoring Service: Centralizes logging and monitoring for all components.
+
+
