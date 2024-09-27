@@ -110,6 +110,9 @@ Choosing the right architectural characteristics is a critical process that lays
 
 ![image](https://github.com/user-attachments/assets/bb7da18d-a07e-40cb-9abd-84f148c0c160)
 
+![image](https://github.com/user-attachments/assets/09909c04-669f-40fa-b46e-10ed99c8758a)
+
+
 
 1. **Microservices Architecture**
    - **Use Case**: The platform can independently update the **Job Management Service** without affecting the **User Management Service**. If a new feature is added to job postings, it can be deployed without downtime for other services.
