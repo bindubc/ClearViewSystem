@@ -1,7 +1,7 @@
-# User Management with Identity Service
+# User Management, Identity Service with OIDC
 
 ## Context
-The application should provide a mechanism for users, to register with  ClearView system.  The system is intended to attract diverse talent from underrepresented demographics, thus making user information confidential to the ClearView system only.
+The application should provide a mechanism for users to register with the ClearView system, supporting both employers and the job seekers. All user information must be kept confidential, encrypted for data anonymization, and accessible exclusively to the ClearView system.
 
 ## Status
 Proposed
@@ -9,10 +9,9 @@ Proposed
 
 ## Considered Options
 
-* Identity Service with OpenID Connect
-* Integration with external Auth Providers like Google, Facebook.
+* Auth Service with OIDC.
+* Integration with external authentication providers like Google, Facebook.
 * Auth Service as well as External Auth Provider, for basic details fetch.
 
 ## Decision Outcome
-
-Chosen option: "Identity Service with OpenID Connect",  The primary users of ClearView are from underrepresented demographics, thus may not be registered with external auth providers.  Moreover, user information is confidential, and usage of external auth providers may result in ClearView users information leak, in the events of security breaches.
+Selected option: "Auth Service with OIDC." User information is highly sensitive and confidential, and relying on external authentication providers could expose it to risks in the event of a data breach. In such a scenario, the data of both employers, including MNCs, and job seekers could be compromised.
