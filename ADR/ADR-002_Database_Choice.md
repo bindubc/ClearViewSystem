@@ -1,11 +1,17 @@
- **ADR-002: Database Choice**
+**ADR-002: Database Choice**
    - **Status**: Decided
-   - **Context**: Need for flexible schema and scalability for candidate data.
-   - **Evaluation Criteria**: Scalability, flexibility, ease of querying.
+   - **Context**: The need for flexibility in data schema and scalability for candidate data management.
+   - **Evaluation Criteria**: 
+     - **Scalability**: Ability to efficiently manage growing data volumes.
+     - **Flexibility**: Capability to adapt to changing requirements.
+     - **Ease of Querying**: Support for complex queries and aggregations.
    - **Options**:
-     - SQL (PostgreSQL): Strong consistency, complex queries.
-     - NoSQL (MongoDB): Flexible schema, high scalability.
-   - **Decision**: Use MongoDB for candidate data.
-   - **Implications**: Must ensure data integrity and handle eventual consistency.
+     - **SQL (PostgreSQL)**: Strong consistency and robust querying capabilities.
+     - **NoSQL (MongoDB)**: Flexible schema and high scalability.
+   - **Decision**: Use MongoDB for candidate data storage.
+   - **Implications**: Need to ensure data integrity and handle eventual consistency.
+   - **Failover Strategy**: Utilize MongoDB's replica sets and sharding for high availability and horizontal scaling.
+   - **Resolution for Issues**: Establish data validation and consistency checks to mitigate issues related to eventual consistency.
    - **Consultation**: Database administrators, development team.
+
 
