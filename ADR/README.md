@@ -26,6 +26,7 @@ This document provides an index of all Architectural Decision Records (ADRs) for
 5. [ADR-005: Data Encryption Strategy]([./ADR-005_Data_Encryption_Strategy.md](https://github.com/bindubc/ClearViewSystem/blob/main/ADR/ADR-005_Data_Encryption_Strategy.md))
    - **Status**: Decided
    - **Context**: Compliance requirements for handling personally identifiable information (PII).
+6. (https://github.com/bindubc/ClearViewSystem/blob/main/ADR/006_Algorithm_Selection_for_ClearView_Features.md)
 
 ## How to Use This Index
 Click on the links to access each ADR document for detailed information about the architectural decisions made in the development of ClearView. Each document contains the decision context, evaluation criteria, options considered, implications, and consultation notes.
