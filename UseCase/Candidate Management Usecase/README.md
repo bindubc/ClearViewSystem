@@ -1,28 +1,27 @@
-##  Candidate Management Use Cases
+Here's an in-depth exploration of **Candidate Management Use Cases**, detailing Architectural Decision Records (ADRs), APIs, characteristics, data/operation flows, involved components, storage estimations, failover considerations, recommendations, and discussions around consistency, resiliency, availability, partition issues, and solutions.
 
-Here’s a deeper exploration of the **Candidate Management Use Cases** for the ClearView platform, detailing Architectural Decision Records (ADRs), APIs, characteristics, and the data/operation flow with the involved components.
-
-### **Candidate Management Use Cases**
+### **Candidate Management Use Cases Deep Dive**
 
 ---
 
-### **Use Case 1: Register Candidate**
+### **1. Register Candidate**
 
 #### **Description**
 Candidates can create an account on the ClearView platform.
 
 #### **Actors**
-- Candidates
+- **Primary Actor**: Candidate
+- **Secondary Actor**: System Admin (for monitoring)
 
 #### **Preconditions**
-- Access to the ClearView website or application.
+- The candidate must have internet access.
 
 #### **Postconditions**
-- Candidate account is created, and they receive a confirmation email.
+- The candidate's account is created, and they receive a confirmation email.
 
 #### **ADR**
-- **Decision**: Use OAuth 2.0 for authentication.
-- **Reason**: OAuth provides a secure, token-based authentication method that enhances security and allows for easy integration with third-party services.
+- **Decision**: Use OAuth 2.0 for secure authentication.
+- **Reason**: It allows integration with external identity providers (e.g., Google, LinkedIn) and enhances security.
 
 #### **API**
 - **POST /api/candidates/register**
@@ -35,45 +34,65 @@ Candidates can create an account on the ClearView platform.
     }
     ```
   - **Response**:
-    - **201 Created**: User account created successfully.
-    - **400 Bad Request**: Validation errors.
+    - **201 Created**: Account created successfully.
+    - **400 Bad Request**: Invalid input data.
 
 #### **Characteristics**
-- **Usability**: Easy-to-navigate registration interface.
-- **Security**: Secure password storage (e.g., bcrypt).
+- **Usability**: Intuitive UI for registration.
+- **Security**: Passwords are hashed using bcrypt before storage.
 
 #### **Data/Operation Flow**
-1. **Candidate** submits registration data.
-2. **API Gateway** receives the request.
-3. **Auth Service** processes registration and stores user data in **User Database**.
-4. A confirmation email is sent via **Notification Service**.
+1. **Candidate** submits registration form.
+2. **API Gateway** receives the request and forwards it to the **Auth Service**.
+3. **Auth Service**:
+   - Validates the data.
+   - Stores user information in **User Database**.
+4. Sends a confirmation email via **Notification Service**.
 
 #### **Involved Components**
-- Candidate Interface
-- API Gateway
-- Auth Service
-- User Database
-- Notification Service
+- **Candidate Interface**
+- **API Gateway**
+- **Auth Service**
+- **User Database**
+- **Notification Service**
+
+#### **Storage Estimation**
+- **Storage**: Approximately 1 MB per candidate (profile data).
+- For 10,000 candidates: **10 GB**.
+
+#### **Failover Considerations**
+- Implement a retry mechanism for failed registrations.
+- Use a secondary email service to ensure notifications are sent even if the primary fails.
+
+#### **Recommendations**
+- Monitor registration attempts with logging to identify common issues or bottlenecks.
+- Implement rate limiting to prevent abuse of the registration endpoint.
+
+#### **Consistency, Resiliency, Availability, and Partition Issues**
+- **Consistency**: Strong consistency is crucial for user accounts; they must exist immediately upon creation.
+- **Resiliency**: Ensure the registration process can handle transient failures gracefully.
+- **Availability**: Use load balancing to distribute incoming requests and maintain high availability.
+- **Partition Issues**: Ensure the system can queue requests if there’s a partition; use a message queue to handle bursts in registration.
 
 ---
 
-### **Use Case 2: Upload/Update Resume**
+### **2. Upload/Update Resume**
 
 #### **Description**
 Candidates can upload or update their resumes.
 
 #### **Actors**
-- Candidates
+- **Primary Actor**: Candidate
 
 #### **Preconditions**
-- Candidate is registered and logged in.
+- The candidate must be registered and logged in.
 
 #### **Postconditions**
-- Resume is stored in the candidate's profile and is ready for matching.
+- The candidate's resume is stored and linked to their profile.
 
 #### **ADR**
 - **Decision**: Use AWS S3 for storing resumes.
-- **Reason**: AWS S3 provides scalable, durable, and secure storage for files, making it ideal for document management.
+- **Reason**: S3 offers scalable and durable object storage.
 
 #### **API**
 - **POST /api/candidates/{id}/resume**
@@ -84,40 +103,58 @@ Candidates can upload or update their resumes.
 
 #### **Characteristics**
 - **Scalability**: Can handle large file uploads efficiently.
-- **Performance**: Quick upload/download times.
+- **Performance**: Optimized for quick retrieval.
 
 #### **Data/Operation Flow**
-1. **Candidate** uploads the resume.
-2. **API Gateway** forwards the request to the **Resume Service**.
-3. **Resume Service** stores the resume in **AWS S3**.
-4. A success response is sent back to the candidate.
+1. **Candidate** uploads their resume.
+2. **API Gateway** forwards the request to **Resume Service**.
+3. **Resume Service**:
+   - Validates the file.
+   - Stores the file in **AWS S3**.
+4. A success response is sent to the candidate.
 
 #### **Involved Components**
-- Candidate Interface
-- API Gateway
-- Resume Service
-- AWS S3
+- **Candidate Interface**
+- **API Gateway**
+- **Resume Service**
+- **AWS S3**
+
+#### **Storage Estimation**
+- **Storage**: Approximately 500 KB per resume.
+- For 10,000 resumes: **5 GB**.
+
+#### **Failover Considerations**
+- Utilize S3 versioning to recover previous versions of resumes.
+- Implement retries for upload failures.
+
+#### **Recommendations**
+- Use a CDN to cache frequently accessed resumes for faster access and improved performance.
+
+#### **Consistency, Resiliency, Availability, and Partition Issues**
+- **Consistency**: S3 provides eventual consistency; ensure application handles this.
+- **Resiliency**: Implement logging to track upload issues.
+- **Availability**: Ensure multiple instances of the **Resume Service** are available.
+- **Partition Issues**: If network partitions occur, queue upload requests and process them when the connection is restored.
 
 ---
 
-### **Use Case 3: Profile Anonymization**
+### **3. Profile Anonymization**
 
 #### **Description**
-The system automatically anonymizes the candidate's profile.
+The system anonymizes candidate profiles to protect sensitive information.
 
 #### **Actors**
-- Candidates
-- System
+- **Primary Actor**: System (automated process)
 
 #### **Preconditions**
 - Resume is uploaded.
 
 #### **Postconditions**
-- Candidate profile is anonymized for employers.
+- Candidate profile is anonymized.
 
 #### **ADR**
-- **Decision**: Implement data masking techniques.
-- **Reason**: Data masking provides a way to hide sensitive information without altering the original data structure.
+- **Decision**: Use data masking techniques for anonymization.
+- **Reason**: Ensures sensitive data is hidden while retaining structure.
 
 #### **API**
 - **POST /api/candidates/anonymize/{id}**
@@ -125,120 +162,114 @@ The system automatically anonymizes the candidate's profile.
     - **200 OK**: Profile anonymized successfully.
 
 #### **Characteristics**
-- **Privacy**: Protects candidate identity during the hiring process.
-- **Compliance**: Adheres to GDPR and other data protection regulations.
+- **Privacy**: Protects candidate identity.
+- **Compliance**: Adheres to GDPR and similar regulations.
 
 #### **Data/Operation Flow**
-1. **System** triggers the anonymization process.
-2. **Anonymization Service** processes candidate data and masks sensitive information.
-3. Anonymized data is stored in **Anonymized Profile Database**.
-4. A success response is sent back to the candidate.
+1. **System** triggers anonymization process.
+2. **Anonymization Service**:
+   - Masks sensitive fields in the profile.
+   - Stores anonymized data in **Anonymized Profile Database**.
+3. Sends confirmation response.
 
 #### **Involved Components**
-- Anonymization Service
-- Anonymized Profile Database
+- **Anonymization Service**
+- **Anonymized Profile Database**
+
+#### **Storage Estimation**
+- **Storage**: Approximately 200 KB per anonymized profile.
+- For 10,000 profiles: **2 GB**.
+
+#### **Failover Considerations**
+- Implement logging for anonymization attempts to track failures.
+- Use a retry mechanism for failed anonymization requests.
+
+#### **Recommendations**
+- Ensure redundancy in the **Anonymized Profile Database** to maintain availability.
+
+#### **Consistency, Resiliency, Availability, and Partition Issues**
+- **Consistency**: High consistency is required for accurate anonymization.
+- **Resiliency**: Anonymization processes should be retried in case of transient failures.
+- **Availability**: Ensure the anonymization service is always operational.
+- **Partition Issues**: Handle network partitions gracefully, queuing requests if necessary.
 
 ---
 
-### **Use Case 4: Match Profile with Job Roles**
+### **4. Match Profile with Job Roles**
 
 #### **Description**
-Use AI to analyze candidate profiles and match them with job descriptions.
+The system analyzes candidate profiles to match them with job descriptions.
 
 #### **Actors**
-- Candidates
-- System
+- **Primary Actor**: System
 
 #### **Preconditions**
-- Candidate has an anonymized profile and job postings are available.
+- Candidates have uploaded resumes and job postings are available.
 
 #### **Postconditions**
-- Similarity scores are generated for job matches.
+- Similarity scores for job matches are generated.
 
 #### **ADR**
-- **Decision**: Use machine learning algorithms (e.g., NLP) for matching.
-- **Reason**: NLP algorithms can efficiently analyze resumes and job descriptions to generate accurate matches.
+- **Decision**: Use machine learning algorithms (NLP) for profile matching.
+- **Reason**: NLP algorithms effectively analyze textual data.
 
 #### **API**
 - **GET /api/candidates/{id}/matches**
   - **Response**:
-    - **200 OK**: Returns a list of job matches with similarity scores.
+    - **200 OK**: List of job matches with similarity scores.
 
 #### **Characteristics**
-- **Accuracy**: High precision in matching candidates with jobs.
-- **Performance**: Quick processing of large data sets.
+- **Accuracy**: High precision in matching candidates to jobs.
+- **Performance**: Quick processing of large datasets.
 
 #### **Data/Operation Flow**
-1. **System** requests job postings and candidate profiles.
-2. **Matching Service** analyzes profiles using **NLP** algorithms.
-3. Similarity scores are generated and stored in the **Match Results Database**.
-4. Results are returned to the candidate.
+1. **System** requests candidate profiles and job postings.
+2. **Matching Service**:
+   - Analyzes profiles using NLP.
+   - Generates similarity scores and stores them in **Match Results Database**.
+3. Returns results to the candidate.
 
 #### **Involved Components**
-- Matching Service
-- Job Database
-- Match Results Database
+- **Matching Service**
+- **Job Database**
+- **Match Results Database**
+
+#### **Storage Estimation**
+- **Storage**: Approximately 50 KB per match record.
+- For 10,000 candidates matched: **500 MB**.
+
+#### **Failover Considerations**
+- Implement caching for job postings to reduce database load.
+- Log matching failures for further investigation.
+
+#### **Recommendations**
+- Use a dedicated ML model service for scalability.
+
+#### **Consistency, Resiliency, Availability, and Partition Issues**
+- **Consistency**: High consistency is needed to ensure matches are accurate.
+- **Resiliency**: Matching processes should be able to recover from failures.
+- **Availability**: Ensure matching services are load-balanced.
+- **Partition Issues**: Use a queue for match requests during partitions.
 
 ---
 
-### **Use Case 5: View Matching Jobs**
-
-#### **Description**
-Candidates can view job roles that match their profiles.
-
-#### **Actors**
-- Candidates
-
-#### **Preconditions**
-- Candidate profile is matched with job postings.
-
-#### **Postconditions**
-- Candidate sees a list of recommended jobs.
-
-#### **ADR**
-- **Decision**: Use a RESTful API for job retrieval.
-- **Reason**: RESTful APIs are stateless, making them ideal for fetching resources like job listings.
-
-#### **API**
-- **GET /api/candidates/{id}/recommended-jobs**
-  - **Response**:
-    - **200 OK**: Returns a list of recommended jobs.
-
-#### **Characteristics**
-- **Responsiveness**: Fast loading of job recommendations.
-- **User-Friendly**: Intuitive job listing interface.
-
-#### **Data/Operation Flow**
-1. **Candidate** requests recommended jobs.
-2. **API Gateway** forwards the request to the **Job Service**.
-3. **Job Service** retrieves matching jobs from the **Job Database**.
-4. Results are sent back to the candidate.
-
-#### **Involved Components**
-- Candidate Interface
-- API Gateway
-- Job Service
-- Job Database
-
----
-
-### **Use Case 6: Apply for a Job**
+### **5. Apply for a Job**
 
 #### **Description**
 Candidates can apply for jobs through the platform.
 
 #### **Actors**
-- Candidates
+- **Primary Actor**: Candidate
 
 #### **Preconditions**
-- Candidate has matching jobs available.
+- Candidate has matched jobs available.
 
 #### **Postconditions**
-- Application is submitted, and candidate is notified.
+- Application submitted, and candidate is notified.
 
 #### **ADR**
-- **Decision**: Use transactional email service (e.g., SendGrid) for notifications.
-- **Reason**: SendGrid provides reliable and scalable email delivery.
+- **Decision**: Use a transactional email service (e.g., SendGrid) for notifications.
+- **Reason**: Provides reliable email delivery.
 
 #### **API**
 - **POST /api/candidates/{id}/apply**
@@ -248,188 +279,273 @@ Candidates can apply for jobs through the platform.
     - **400 Bad Request**: Invalid job ID.
 
 #### **Characteristics**
-- **Reliability**: Ensures that application submissions are processed correctly.
-- **Speed**: Quick confirmation of application receipt.
+- **Reliability**: Ensures applications are processed correctly.
+- **Speed**: Quick confirmation of receipt.
 
 #### **Data/Operation Flow**
-1. **Candidate** applies for a job.
-2. **API Gateway** forwards the application request to the **Application Service**.
-3. **Application Service** stores the application in the **Application Database**.
-4. A confirmation email is sent via **Notification Service**.
+1. **Candidate** submits an application.
+2. **API Gateway** forwards request to **Application Service**.
+3. **Application Service** stores application
+
+ in **Application Database**.
+4. Sends confirmation email via **Notification Service**.
 
 #### **Involved Components**
-- Candidate Interface
-- API Gateway
-- Application Service
-- Application Database
-- Notification Service
+- **Candidate Interface**
+- **API Gateway**
+- **Application Service**
+- **Application Database**
+- **Notification Service**
+
+#### **Storage Estimation**
+- **Storage**: Approximately 100 KB per application.
+- For 10,000 applications: **1 GB**.
+
+#### **Failover Considerations**
+- Implement a queue for application submissions to prevent data loss during high load.
+
+#### **Recommendations**
+- Monitor application submissions for any spikes or anomalies.
+
+#### **Consistency, Resiliency, Availability, and Partition Issues**
+- **Consistency**: Ensure applications are correctly linked to candidates.
+- **Resiliency**: Implement a circuit breaker pattern for the application service.
+- **Availability**: Multiple instances of services should be available.
+- **Partition Issues**: Use a message queue to handle submissions during network partitions.
 
 ---
-
-### **Use Case 7: Receive Notifications**
+### **6. Interview Scheduling**
 
 #### **Description**
-Candidates receive notifications about job matches and interview invitations.
+Candidates can schedule interviews for job applications they have submitted.
 
 #### **Actors**
-- Candidates
-- System
+- **Primary Actor**: Candidate
+- **Secondary Actor**: Recruiter
 
 #### **Preconditions**
-- Candidate is actively looking for jobs.
+- Candidates must have submitted applications.
 
 #### **Postconditions**
-- Candidates are informed of opportunities and updates.
+- An interview is scheduled, and both the candidate and recruiter are notified.
 
 #### **ADR**
-- **Decision**: Implement WebSocket for real-time notifications.
-- **Reason**: WebSockets provide a full-duplex communication channel, allowing instant updates.
+- **Decision**: Integrate a third-party calendar API (e.g., Google Calendar API) for scheduling.
+- **Reason**: Simplifies calendar management and sends reminders to participants.
 
 #### **API**
-- **GET /api/candidates/{id}/notifications**
+- **POST /api/candidates/{id}/schedule-interview**
+  - **Request Body**:
+    ```json
+    {
+      "jobId": "string",
+      "interviewDate": "string",
+      "interviewTime": "string"
+    }
+    ```
   - **Response**:
-    - **200 OK**: Returns a list of notifications.
+    - **201 Created**: Interview scheduled successfully.
+    - **400 Bad Request**: Invalid date/time format.
 
 #### **Characteristics**
-- **Real-Time**: Immediate updates on job-related activities.
-- **User Engagement**: Keeps candidates engaged with the platform.
+- **Usability**: User-friendly interface for selecting available times.
+- **Reliability**: Ensures that interview times are confirmed through the calendar API.
 
 #### **Data/Operation Flow**
-1. **System** monitors job matches and interview invitations.
-2. Notifications are pushed to the **Notification Service**.
-3. Candidates receive notifications through **WebSocket** or email.
+1. **Candidate** selects available times for an interview.
+2. **API Gateway** sends the request to the **Interview Scheduling Service**.
+3. **Interview Scheduling Service**:
+   - Validates the request.
+   - Schedules the interview using the **Calendar API**.
+   - Stores the interview details in **Interview Database**.
+4. Sends confirmation notifications to both the candidate and the recruiter.
 
 #### **Involved Components**
-- Notification Service
-- WebSocket Service
+- **Candidate Interface**
+- **API Gateway**
+- **Interview Scheduling Service**
+- **Interview Database**
+- **Calendar API**
+
+#### **Storage Estimation**
+- **Storage**: Approximately 50 KB per interview record.
+- For 10,000 interviews: **500 MB**.
+
+#### **Failover Considerations**
+- Implement a retry mechanism for scheduling failures.
+- Maintain logs to identify scheduling issues.
+
+#### **Recommendations**
+- Use time zone management to ensure correct scheduling across different regions.
+
+#### **Consistency, Resiliency, Availability, and Partition Issues**
+- **Consistency**: Ensure interview data is consistently updated across systems.
+- **Resiliency**: Design the scheduling service to handle temporary outages.
+- **Availability**: Load balance requests to the interview scheduling service.
+- **Partition Issues**: Use a message queue to manage requests during network outages.
 
 ---
 
-### **Use Case 8: Track Application Status**
+### **7. Feedback Collection**
 
 #### **Description**
-Candidates can track the status of their applications.
+The system allows recruiters to collect feedback on candidates after interviews.
 
 #### **Actors**
-- Candidates
+- **Primary Actor**: Recruiter
 
 #### **Preconditions**
-- Candidate has submitted applications.
+- An interview must have been conducted.
 
 #### **Postconditions**
-- Candidate sees the latest status of their applications.
+- Feedback is stored and associated with the candidate's profile.
 
 #### **ADR**
-- **Decision**: Use a state machine for application tracking.
-- **Reason**: State machines allow clear definitions of application statuses and transitions.
+- **Decision**: Utilize a structured feedback form to standardize responses.
+- **Reason**: Standardization improves the quality and comparability of feedback.
 
 #### **API**
-- **GET /api/candidates/{id}/applications**
+- **POST /api/candidates/{id}/feedback**
+  - **Request Body**:
+    ```json
+    {
+      "interviewId": "string",
+      "feedback": "string",
+      "rating": "integer"
+    }
+    ```
   - **Response**:
-    - **200 OK**: Returns the status of each application.
+    - **201 Created**: Feedback submitted successfully.
+    - **400 Bad Request**: Invalid feedback format.
 
 #### **Characteristics**
-- **Clarity**: Clear communication of application status.
-- **Transparency**: Builds trust between candidates and employers.
+- **Structured**: Collects feedback in a uniform manner.
+- **Efficiency**: Simplifies the feedback process for recruiters.
 
 #### **Data/Operation Flow**
-1. **Candidate
-
-** requests application status.
-2. **API Gateway** forwards the request to the **Application Status Service**.
-3. **Application Status Service** retrieves the status from the **Application Database**.
-4. Status information is sent back to the candidate.
+1. **Recruiter** submits feedback for a candidate.
+2. **API Gateway** forwards the request to **Feedback Service**.
+3. **Feedback Service**:
+   - Validates the feedback.
+   - Stores feedback in **Feedback Database**.
+4. Sends a confirmation response to the recruiter.
 
 #### **Involved Components**
-- Candidate Interface
-- API Gateway
-- Application Status Service
-- Application Database
+- **Recruiter Interface**
+- **API Gateway**
+- **Feedback Service**
+- **Feedback Database**
+
+#### **Storage Estimation**
+- **Storage**: Approximately 10 KB per feedback entry.
+- For 10,000 feedback entries: **100 MB**.
+
+#### **Failover Considerations**
+- Ensure feedback submissions are retried on failure.
+- Maintain logs to track feedback submissions.
+
+#### **Recommendations**
+- Regularly analyze feedback data to identify trends and improve the hiring process.
+
+#### **Consistency, Resiliency, Availability, and Partition Issues**
+- **Consistency**: Ensure that feedback is immediately accessible after submission.
+- **Resiliency**: Feedback service should be designed to recover from failures.
+- **Availability**: Ensure that the feedback service is highly available to recruiters.
+- **Partition Issues**: Use queues to manage feedback submissions during network partitions.
 
 ---
 
-### **Use Case 9: Withdraw Application**
+### **8. Reporting and Analytics**
 
 #### **Description**
-Candidates can withdraw their applications for specific jobs.
+The system provides reporting and analytics on the hiring process and candidate statistics.
 
 #### **Actors**
-- Candidates
+- **Primary Actor**: HR Manager
 
 #### **Preconditions**
-- Candidate has submitted applications.
+- Data must be available from previous actions (applications, interviews, feedback).
 
 #### **Postconditions**
-- Application is withdrawn, and the candidate is notified.
+- Reports are generated and available for review.
 
 #### **ADR**
-- **Decision**: Implement soft-delete for applications.
-- **Reason**: Soft-delete allows the application data to be retained for reporting while removing it from active status.
+- **Decision**: Use a BI tool (e.g., Tableau) for visualizing reports.
+- **Reason**: Provides advanced analytics capabilities.
 
 #### **API**
-- **DELETE /api/candidates/{id}/applications/{applicationId}**
+- **GET /api/reports/hiring-statistics**
   - **Response**:
-    - **200 OK**: Application withdrawn successfully.
+    - **200 OK**: Returns aggregated statistics.
 
 #### **Characteristics**
-- **Flexibility**: Allows candidates to manage their applications easily.
-- **Data Integrity**: Maintains historical records of applications.
+- **Insightful**: Provides key metrics for decision-making.
+- **User-Friendly**: Allows HR managers to easily navigate and understand reports.
 
 #### **Data/Operation Flow**
-1. **Candidate** requests to withdraw an application.
-2. **API Gateway** forwards the request to the **Application Service**.
-3. **Application Service** updates the application status in the **Application Database** (soft-delete).
-4. A success response is sent back to the candidate.
+1. **HR Manager** requests reports.
+2. **API Gateway** directs the request to the **Reporting Service**.
+3. **Reporting Service** aggregates data from **Application Database**, **Feedback Database**, and **Interview Database**.
+4. Generates reports and returns them to the HR manager.
 
 #### **Involved Components**
-- Candidate Interface
-- API Gateway
-- Application Service
-- Application Database
+- **HR Interface**
+- **API Gateway**
+- **Reporting Service**
+- **Application Database**
+- **Feedback Database**
+- **Interview Database**
+
+#### **Storage Estimation**
+- Reports are generated on demand; therefore, no additional storage is needed.
+
+#### **Failover Considerations**
+- Implement caching for frequently accessed reports.
+- Log reporting failures for analysis.
+
+#### **Recommendations**
+- Schedule regular report generation to keep data fresh.
+
+#### **Consistency, Resiliency, Availability, and Partition Issues**
+- **Consistency**: Ensure reports reflect the most current data.
+- **Resiliency**: Design the reporting service to handle failures gracefully.
+- **Availability**: Ensure high availability of the reporting system.
+- **Partition Issues**: Consider using a distributed database for analytics to manage data during partitions.
 
 ---
 
-### **Use Case 10: View Analytics on Past Applications**
+### **Summary of Key Components in Candidate Management**
 
-#### **Description**
-Candidates can view insights on their application history.
+The architecture consists of the following major components, each with its defined technologies and responsibilities:
 
-#### **Actors**
-- Candidates
-
-#### **Preconditions**
-- Candidate has a history of job applications.
-
-#### **Postconditions**
-- Candidate sees a summary of their application performance.
-
-#### **ADR**
-- **Decision**: Use data visualization tools (e.g., Chart.js) for analytics.
-- **Reason**: Chart.js provides simple yet powerful data visualization capabilities.
-
-#### **API**
-- **GET /api/candidates/{id}/analytics**
-  - **Response**:
-    - **200 OK**: Returns analytics data about past applications.
-
-#### **Characteristics**
-- **Insights**: Helps candidates understand their application trends.
-- **User Empowerment**: Provides actionable feedback for future applications.
-
-#### **Data/Operation Flow**
-1. **Candidate** requests analytics data.
-2. **API Gateway** forwards the request to the **Analytics Service**.
-3. **Analytics Service** retrieves data from the **Application Database** and processes it.
-4. Processed analytics data is sent back to the candidate.
-
-#### **Involved Components**
-- Candidate Interface
-- API Gateway
-- Analytics Service
-- Application Database
+| **Component**              | **Technology**       | **Responsibility**                                 |
+|----------------------------|----------------------|---------------------------------------------------|
+| Candidate Interface        | React, Angular        | Frontend for candidates and recruiters             |
+| API Gateway                | Node.js, Express     | Routes requests and manages API calls             |
+| Auth Service               | Spring Boot, JWT     | Manages authentication and user registration      |
+| Resume Service             | Python, Flask        | Handles resume uploads and storage                 |
+| Anonymization Service      | Java, Spring Boot    | Anonymizes candidate data                          |
+| Matching Service           | Python, NLP          | Matches candidates with job descriptions           |
+| Interview Scheduling Service| Node.js              | Manages scheduling of interviews                   |
+| Feedback Service           | Ruby on Rails        | Collects and stores feedback                       |
+| Reporting Service          | Python, Pandas       | Generates reports and analytics                    |
+| Notification Service       | AWS SNS, Twilio      | Sends notifications and alerts                     |
+| Application Database       | PostgreSQL           | Stores candidate applications                      |
+| Feedback Database          | MongoDB              | Stores feedback entries                            |
+| Interview Database         | MySQL                | Stores interview records                           |
+| Anonymized Profile Database| AWS DynamoDB         | Stores anonymized profiles                         |
+| Match Results Database     | Cassandra            | Stores matching results between candidates and jobs|
 
 ---
 
-### Conclusion
+### **Conclusion and Next Steps**
 
-This detailed exploration of the **Candidate Management Use Cases** incorporates ADRs, APIs, characteristics, and data/operation flows along with the involved components. This structured approach ensures that the ClearView platform efficiently manages candidates throughout their job search journey while maintaining security, usability, and performance. 
+The **Candidate Management Use Cases** are designed to provide a seamless experience for both candidates and recruiters. By defining clear APIs, data flows, and storage estimates, the architecture ensures that all operations are handled efficiently.
+
+**Next Steps**:
+1. **Implementation**: Start building each component with focus on modularity and scalability.
+2. **Testing**: Develop unit and integration tests for all APIs and services.
+3. **Monitoring**: Implement monitoring and logging to track performance and identify issues in real-time.
+4. **Feedback Loop**: Regularly gather feedback from users to refine and enhance the system.
+
+This structured approach to candidate management will not only enhance the hiring process but also improve the overall experience for candidates and recruiters alike.
