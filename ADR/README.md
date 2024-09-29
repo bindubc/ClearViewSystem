@@ -1,5 +1,5 @@
 
-### ADR Index
+
 
 
 # Architectural Decision Records (ADR) Index
