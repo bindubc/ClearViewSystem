@@ -48,13 +48,23 @@ Here’s a comprehensive list of all APIs categorized by component, along with t
   - Backend (Authentication Service)
   - Database (User Database)
 - **Sequence Diagram**:
-  ```plaintext
+```
+sequenceDiagram
   User -> Client: Enter Registration Details
   Client -> Authentication Service: POST /api/v1/register
   Authentication Service -> User Database: Check for existing email
   User Database --> Authentication Service: Email Exists / Not Found
   Authentication Service --> Client: Return Success/Error Response
-  ```
+```
+```mermaid
+sequenceDiagram
+  User -> Client: Enter Registration Details
+  Client -> Authentication Service: POST /api/v1/register
+  Authentication Service -> User Database: Check for existing email
+  User Database --> Authentication Service: Email Exists / Not Found
+  Authentication Service --> Client: Return Success/Error Response
+```
+
 
 ---
 
@@ -79,13 +89,23 @@ Here’s a comprehensive list of all APIs categorized by component, along with t
   - Backend (Authentication Service)
   - Database (User Database)
 - **Sequence Diagram**:
-  ```plaintext
+```sequenceDiagram
   User -> Client: Enter Login Credentials
   Client -> Authentication Service: POST /api/v1/login
   Authentication Service -> User Database: Validate Credentials
   User Database --> Authentication Service: Valid / Invalid
   Authentication Service --> Client: Return Token / Error Response
-  ```
+```
+```mermaid
+sequenceDiagram
+  User -> Client: Enter Login Credentials
+  Client -> Authentication Service: POST /api/v1/login
+  Authentication Service -> User Database: Validate Credentials
+  User Database --> Authentication Service: Valid / Invalid
+  Authentication Service --> Client: Return Token / Error Response
+```
+
+
 
 ---
 
@@ -110,13 +130,21 @@ Here’s a comprehensive list of all APIs categorized by component, along with t
   - Backend (Candidate Service)
   - Database (Candidate Database)
 - **Sequence Diagram**:
-  ```plaintext
+```sequenceDiagram
   User -> Client: Request Candidate Profile
   Client -> Candidate Service: GET /api/v1/candidates/{candidateId}
   Candidate Service -> Candidate Database: Fetch Candidate Details
   Candidate Database --> Candidate Service: Candidate Data / Not Found
   Candidate Service --> Client: Return Candidate Data / Error Response
-  ```
+```
+```mermaid
+sequenceDiagram
+  User -> Client: Request Candidate Profile
+  Client -> Candidate Service: GET /api/v1/candidates/{candidateId}
+  Candidate Service -> Candidate Database: Fetch Candidate Details
+  Candidate Database --> Candidate Service: Candidate Data / Not Found
+  Candidate Service --> Client: Return Candidate Data / Error Response
+```
 
 ---
 
@@ -140,13 +168,14 @@ Here’s a comprehensive list of all APIs categorized by component, along with t
   - Backend (Candidate Service)
   - Database (Candidate Database)
 - **Sequence Diagram**:
-  ```plaintext
+```mermaid
+sequenceDiagram
   User -> Client: Request to Update Profile
   Client -> Candidate Service: PUT /api/v1/candidates/{candidateId}
   Candidate Service -> Candidate Database: Validate and Update
   Candidate Database --> Candidate Service: Success / Error
   Candidate Service --> Client: Return Success/Error Response
-  ```
+```
 
 ---
 
@@ -171,13 +200,14 @@ Here’s a comprehensive list of all APIs categorized by component, along with t
   - Backend (Job Service)
   - Database (Job Database)
 - **Sequence Diagram**:
-  ```plaintext
+```mermaid
+sequenceDiagram
   Employer -> Client: Enter Job Posting Details
   Client -> Job Service: POST /api/v1/employers/{employerId}/jobs
   Job Service -> Job Database: Validate and Save Job Posting
   Job Database --> Job Service: Success / Error
   Job Service --> Client: Return Success/Error Response
-  ```
+```
 
 ---
 
@@ -239,9 +269,11 @@ Here’s a comprehensive list of all APIs categorized by component, along with t
   - Backend (Reporting Service)
   - Database (Reporting Database)
 - **Sequence Diagram**:
-  ```plaintext
+```mermaid
+sequenceDiagram
   User -> Client: Request KPI Data
   Client -> Reporting Service: GET /api/v1/reports/kpis
   Reporting Service -> Reporting Database: Fetch KPI Data
   Reporting Database --> Reporting Service: KPI Data / Not Available
   Reporting Service --> Client: Return KPI Data
+```
