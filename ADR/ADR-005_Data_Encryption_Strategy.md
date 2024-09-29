@@ -1,11 +1,15 @@
-**ADR-005: Data Encryption Strategy**
+5. **ADR-005: Data Encryption Strategy**
    - **Status**: Decided
-   - **Context**: Compliance requirements for handling PII.
-   - **Evaluation Criteria**: Security, performance, compliance.
+   - **Context**: Compliance requirements for handling personally identifiable information (PII).
+   - **Evaluation Criteria**: 
+     - **Security**: Protect sensitive data from unauthorized access.
+     - **Performance**: Minimize the impact on application speed and response time.
+     - **Compliance**: Adherence to legal and regulatory standards.
    - **Options**:
-     - AES for data at rest and TLS for data in transit.
-     - Only encrypt sensitive fields, leaving others unencrypted.
+     - **AES for data at rest and TLS for data in transit**: Comprehensive and robust security measures.
+     - **Only encrypt sensitive fields**: Easier implementation but exposes more data.
    - **Decision**: Encrypt all PII using AES; enforce TLS for all communications.
-   - **Implications**: Performance overhead but necessary for compliance.
+   - **Implications**: Performance overhead but necessary for regulatory compliance.
+   - **Failover Strategy**: Implement secure key management practices and regular key rotation to minimize risks.
+   - **Resolution for Issues**: Develop fallback mechanisms to access data in case of encryption failures or issues.
    - **Consultation**: Compliance officer, security team.
-
