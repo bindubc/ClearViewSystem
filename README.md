@@ -167,5 +167,8 @@ These architectural characteristics are essential for ensuring that the ClearVie
 
 ## Designing the Architecture
 
-* [__Context view__](./C4/README.md)
+* [__Context view__](./C4/ContextDiagram.md)
+* [__Container view__](./C4/ContainerDiagram.md)
+* [__component_view__](./ComponentDiagram.md)
+  
 
