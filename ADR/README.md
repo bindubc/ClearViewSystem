@@ -6,7 +6,7 @@
 
 This document provides an index of all Architectural Decision Records (ADRs) for ClearView.
 
-1. [ADR-001: Choice of Microservices Architecture](./ADR-001_Choice_of_Microservices Architecture.md)
+1. [ADR-001: Choice of Microservices Architecture](ADR-001_Choice_of_Microservices Architecture.md)
    - **Status**: Decided
    - **Context**: The need for scalability, independent deployability, and the ability to manage complex functionalities across teams.
 
