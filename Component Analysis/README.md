@@ -1,5 +1,6 @@
 For ClearView, the main components are categorized into **Frontend**, **Backend**, and **Integration** services, each designed to handle a distinct part of the platform's functionality. The components below support ClearView’s mission of providing an unbiased and transparent hiring experience by integrating data, managing user interactions, and offering intelligent analysis.
 
+
 ### **ClearView Component List**
 
 #### **1. Frontend Components**
