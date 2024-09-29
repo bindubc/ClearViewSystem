@@ -12,9 +12,10 @@ This repository contains team's submission to O'Reilly's [Architectural Katas: F
 
 ## Structure
 
-- [Introduction and Company Overview](#Introduction)
-- [ClearView Requirement](#Requirements)
-- [Component Analysis](#ComponentAnalysis)
+- [Introduction](#Introduction)
+- [Problem Overview](#ClearView)
+- [ClearView Functional Requirement](#Requirements)
+- [Scrutinizing Component](#ComponentAnalysis)
 - [Architectiure Characteristics](#characteristics)
 - [C4 Models]()
 - [ARDs](./ADR/README.md)
@@ -43,6 +44,7 @@ The Diversity Cyber Council is a non-profit organization dedicated to increasing
 
 By focusing on these areas, the Diversity Cyber Council seeks to ensure more inclusive participation in the tech sector, helping to close the diversity gap in the industry.
 
+<div id="ClearView"></div>
 # ClearView - Transparent Decision Making: HR Platform to Reduce Hiring Bias
 
 ### Overview
@@ -162,4 +164,8 @@ Choosing the right architectural characteristics is a critical process that lays
     - **Use Case**: The platform ensures that all data handling processes are compliant with employment laws and data privacy regulations, providing necessary audit trails and user consent management.
 
 These architectural characteristics are essential for ensuring that the ClearView platform is robust, efficient, and user-friendly. By aligning these characteristics with specific use cases, the platform can better meet the needs of its users while adapting to changes in the job market and technology landscape. If you need more details or specific examples, feel free to ask!
+
+## Designing the Architecture
+
+* [__Context view__](./C4/README.md)
 
