@@ -21,7 +21,7 @@ For ClearView, the main components are categorized into **Frontend**, **Backend*
 19. [Technologies for Each Component](#s2)
 
 <a name="s1"></a>
-### ** Glimpse of ClearView Component List with Tech**
+### **Glimpse of ClearView Component List with Tech**
 
 #### **1. Frontend Components**
 - **User Interface (UI) Layer**
