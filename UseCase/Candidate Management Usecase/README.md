@@ -1,6 +1,6 @@
 Here's an in-depth exploration of **Candidate Management Use Cases**, detailing Architectural Decision Records (ADRs), APIs, characteristics, data/operation flows, involved components, storage estimations, failover considerations, recommendations, and discussions around consistency, resiliency, availability, partition issues, and solutions.
 
-Disclaimer:  A portion of the flow is depicted in the diagram on these pages, which is a draft copy. The MainReadme Page contains the whole diagram. Design: [Architecture]()
+**Disclaimer**:  A portion of the flow is depicted in the diagram on these pages, which is a draft copy. The MainReadme Page contains the whole diagram. Design: [Architecture]()
 
 ### **Candidate Management Use Cases Deep Dive**
 
