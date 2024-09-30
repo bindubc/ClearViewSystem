@@ -19,7 +19,7 @@ This repository contains team's submission to O'Reilly's [Architectural Katas: F
 - [UserJourney](https://github.com/bindubc/ClearViewSystem/blob/main/UserJourney.md)
 - [Scrutinizing Component](#ComponentAnalysis)
 - [Deployment](https://github.com/bindubc/ClearViewSystem/blob/main/deployment.md)
-- [Component Analysis](https://github.com/bindubc/ClearViewSystem/tree/main/Component%20Analysis)
+- [System Design and Component Analysis](https://github.com/bindubc/ClearViewSystem/tree/main/Component%20Analysis)
 - [Architectiure NonFunctional](#characteristics)
 - [Architectiure Characteritics and Functional Requirement Anaalysis](https://github.com/bindubc/ClearViewSystem/tree/main/ArchitectureCharacteristics)
 - [API](https://github.com/bindubc/ClearViewSystem/tree/main/API)
@@ -190,7 +190,7 @@ These architectural characteristics are essential for ensuring that the ClearVie
   * __Storage Estimation__: https://github.com/bindubc/ClearViewSystem/blob/main/Storage/README.md
   * __Deployment__: https://github.com/bindubc/ClearViewSystem/blob/main/deployment.md 
 
-   ## Complete Operation Flow of ClearView
+   ## System Design
   
   ![image](https://github.com/user-attachments/assets/8f4dc98e-fcd0-478b-aa32-f2463c7c472e)
 
