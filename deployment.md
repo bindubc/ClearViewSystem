@@ -52,44 +52,8 @@ Creating a deployment diagram that incorporates Kubernetes (K8s) for the ClearVi
 ### Diagram Structure
 
 Here’s a structured representation of the deployment diagram using K8s components:
+![image](https://github.com/user-attachments/assets/3b99be42-fe25-4030-922a-56f78c93039b)
 
-```
-+-------------------+                              +-------------------+
-|                   |                              |  CloudFront       |
-|   AWS Cloud       |                              |                   |
-|                   |                              |                   |
-|  +--------------+ |                              | +---------------+ |
-|  |   VPC        | |                              | |  S3          | |
-|  |              | |                              | |               | |
-|  |  +--------+  | |                              | +---------------+ |
-|  |  | Subnet |  | |                              |                   |
-|  |  | (Public)|  | |                              |                   |
-|  |  +--------+  | |                              |                   |
-|  |      |       | |                              |                   |
-|  |      |       | |                              |                   |
-|  |  +--------+  | |    +---------------------+   |                   |
-|  |  | Load   |  | |    |  RDS               |   |                   |
-|  |  | Balancer|--|------|  (PostgreSQL)      |---|                   |
-|  |  +--------+  | |    +---------------------+   |                   |
-|  |              | |                              |                   |
-|  |  +-------------------+    +---------------------+                   |
-|  |  |     EKS Cluster   |----|    CloudWatch       |                   |
-|  |  |                   |    +---------------------+                   |
-|  |  |  +------------+  |      +---------------------+                   |
-|  |  |  |  Pods      |  |      |       SNS           |                   |
-|  |  |  +------------+  |      +---------------------+                   |
-|  |  |  | User Mgmt  |  |                                       |         |
-|  |  |  | Candidate   |  |                                       |         |
-|  |  |  | Employer    |  |                                       |         |
-|  |  |  | DEI         |  |                                       |         |
-|  |  |  | Notification |  |                                       |         |
-|  |  |  | Analytics    |  |                                       |         |
-|  |  |  | Compliance    |  |                                       |         |
-|  |  +------------+  |      +---------------------+                   |
-|  |              | |                              |                   |
-|  +--------------+ |                              |                   |
-+-------------------+                              +-------------------+
-```
 
 ### Descriptions of Interactions
 
