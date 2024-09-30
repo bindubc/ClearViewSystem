@@ -1,4 +1,5 @@
-![image](https://github.com/user-attachments/assets/b6b039c1-ed6c-4c2d-bbcb-5b59e8327c3c)
+![image](https://github.com/user-attachments/assets/e1afe68e-8a01-47ec-b3ba-b511e16f4b65)
+
 
 Here’s a description for a component diagram, outlining its purpose and how it represents the system architecture:
 
