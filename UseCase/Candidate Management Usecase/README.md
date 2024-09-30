@@ -42,12 +42,15 @@ Candidates can create an account on the ClearView platform.
 - **Security**: Passwords are hashed using bcrypt before storage.
 
 #### **Data/Operation Flow**
-1. **Candidate** submits registration form.
-2. **API Gateway** receives the request and forwards it to the **Auth Service**.
-3. **Auth Service**:
-   - Validates the data.
-   - Stores user information in **User Database**.
-4. Sends a confirmation email via **Notification Service**.
+**State**: **Candidate** submits registration form.
+1. **API Gateway** Route the request to backend service
+2. **userManagement** validate and receives the request
+3. The  post validation , request forwarded it to the **Auth Service**.
+4. Post verification, Stores user information in **User Database**.
+5. Sends a confirmation email via **Notification Service**.
+
+   ![image](https://github.com/user-attachments/assets/0d11fcb1-5901-4698-9eb9-2a2b077a9731)
+
 
 #### **Involved Components**
 - **Candidate Interface**
@@ -60,13 +63,28 @@ Candidates can create an account on the ClearView platform.
 - **Storage**: Approximately 1 MB per candidate (profile data).
 - For 10,000 candidates: **10 GB**.
 
+#### **Corner Cases**:
+
+- Invalid email format.
+- Duplicate account creation.
+
+#### Issues and Limitations:
+
+- Potential for email spoofing if email validation is not strict.
+
+
 #### **Failover Considerations**
 - Implement a retry mechanism for failed registrations.
 - Use a secondary email service to ensure notifications are sent even if the primary fails.
+- Implement retries for database operations.
+- Use a secondary database in case of primary failure.
+
 
 #### **Recommendations**
 - Monitor registration attempts with logging to identify common issues or bottlenecks.
 - Implement rate limiting to prevent abuse of the registration endpoint.
+- Use CAPTCHA to prevent bot registrations.
+- Enforce strong password policies.
 
 #### **Consistency, Resiliency, Availability, and Partition Issues**
 - **Consistency**: Strong consistency is crucial for user accounts; they must exist immediately upon creation.
@@ -101,6 +119,10 @@ Candidates can upload or update their resumes.
     - **200 OK**: Resume uploaded successfully.
     - **400 Bad Request**: Invalid file format.
 
+
+#### **Corner Cases**:
+- Unsupported file format.
+- File size exceeds limits.
 #### **Characteristics**
 - **Scalability**: Can handle large file uploads efficiently.
 - **Performance**: Optimized for quick retrieval.
@@ -113,6 +135,13 @@ Candidates can upload or update their resumes.
    - Stores the file in **AWS S3**.
 4. A success response is sent to the candidate.
 
+    ![image](https://github.com/user-attachments/assets/cee48cc2-8b22-4750-abbb-435dd8578258)
+
+    ##### With CDN 
+    ![image](https://github.com/user-attachments/assets/9e25386d-61ab-482c-a8d0-f4358c03c444)
+
+
+
 #### **Involved Components**
 - **Candidate Interface**
 - **API Gateway**
@@ -124,11 +153,17 @@ Candidates can upload or update their resumes.
 - For 10,000 resumes: **5 GB**.
 
 #### **Failover Considerations**
+- Store the uploaded file temporarily before parsing. If parsing fails, revert to the original file.
 - Utilize S3 versioning to recover previous versions of resumes.
 - Implement retries for upload failures.
 
 #### **Recommendations**
 - Use a CDN to cache frequently accessed resumes for faster access and improved performance.
+- Support multiple file formats (PDF, DOCX, etc.).
+- Use a library for accurate parsing of resumes.
+
+#### Issues and Limitations:
+- Parsing inaccuracies for non-standard resume formats.
 
 #### **Consistency, Resiliency, Availability, and Partition Issues**
 - **Consistency**: S3 provides eventual consistency; ensure application handles this.
@@ -171,6 +206,9 @@ The system anonymizes candidate profiles to protect sensitive information.
    - Masks sensitive fields in the profile.
    - Stores anonymized data in **Anonymized Profile Database**.
 3. Sends confirmation response.
+
+   ![image](https://github.com/user-attachments/assets/5c27217f-03ef-4905-9b7b-f99fe9194382)
+
 
 #### **Involved Components**
 - **Anonymization Service**
@@ -512,6 +550,201 @@ The system provides reporting and analytics on the hiring process and candidate 
 - **Availability**: Ensure high availability of the reporting system.
 - **Partition Issues**: Consider using a distributed database for analytics to manage data during partitions.
 
+
+--------
+
+
+xxxx
+### Candidate Management Use Cases: Detailed Breakdown
+
+#### **1. View Job Recommendations**
+- **Data/Operation Flow:**
+  - **Input:** Candidate logs in and accesses the job recommendation feature.
+  - **Process:**
+    1. The system retrieves candidate profile data and preferences from the Candidate Profile Service.
+    2. The Job Recommendation Engine queries the Job Openings Database for relevant matches.
+    3. AI models compute a similarity score between the candidate’s skills and job requirements.
+    4. Personalized job recommendations are presented, ranked by relevance.
+  - **Output:** List of recommended jobs, each with a relevance score.
+
+- **Corner Cases:**
+  - No jobs found that match the candidate's profile.
+  - Outdated candidate profile data causing inaccurate recommendations.
+
+- **Issues and Limitations:**
+  - AI models might fail to capture subtle skills, leading to suboptimal recommendations.
+  - Lack of diversity in recommendations due to overly stringent filters.
+
+- **Failover Strategies:**
+  - If the Job Recommendation Engine fails, return a broader set of job listings based on the candidate’s primary skill set.
+  - Implement retries and use cache for frequently accessed profiles.
+
+- **Recommendations:**
+  - Incorporate user feedback to refine recommendations.
+  - Regularly update the AI model with new job postings and candidate profiles.
+
+- **Components Involved:**
+  - **Frontend:** Job Recommendation Interface
+  - **Backend:**
+    - **Candidate Profile Service**
+    - **Job Recommendation Engine**
+  - **Database:**
+    - **Candidate Database**
+    - **Job Openings Database**
+
+- **Sequence Diagram:**
+  - The interaction starts with the Candidate Profile Service to retrieve user data.
+  - The Job Recommendation Engine processes this data and communicates with the Job Openings Database.
+  - The system sends back the results to the frontend for display.
+
+---
+
+#### **2. Apply for a Job**
+- **Data/Operation Flow:**
+  - **Input:** Candidate selects a job and clicks the “Apply” button.
+  - **Process:**
+    1. Validate that the candidate’s profile is complete.
+    2. Check if the candidate has already applied for the same job.
+    3. Create a new application record in the Job Application Database.
+    4. Notify the employer about the new application.
+  - **Output:** Application confirmation and status set to “Under Review.”
+
+- **Corner Cases:**
+  - Candidate attempts to apply without completing their profile.
+  - Candidate has already applied for the same job.
+  
+- **Issues and Limitations:**
+  - High volume of simultaneous applications may cause delays in application submission.
+  
+- **Failover Strategies:**
+  - Implement a queue-based system for job applications to handle bursts in volume.
+  
+- **Recommendations:**
+  - Show prompts to encourage profile completion before applying.
+  - Notify candidates if they attempt to apply for a duplicate job.
+
+- **Components Involved:**
+  - **Frontend:** Job Application Interface
+  - **Backend:**
+    - **Candidate Profile Service**
+    - **Job Application Service**
+  - **Database:**
+    - **Job Application Database**
+  
+- **Sequence Diagram:**
+  - Candidate submits application -> Profile Validation -> Duplicate Check -> Application Record Creation -> Employer Notification -> Candidate Status Update.
+
+---
+
+#### **3. Track Application Status**
+- **Data/Operation Flow:**
+  - **Input:** Candidate views their application dashboard.
+  - **Process:**
+    1. Retrieve candidate’s unique identifier.
+    2. Query the Job Application Database for status updates.
+    3. Present status updates for each job application.
+  - **Output:** Status of each application (e.g., “Under Review,” “Interview Scheduled,” “Rejected”).
+
+- **Corner Cases:**
+  - No application data available for the candidate.
+  - Inconsistent status updates due to latency in updating the database.
+
+- **Issues and Limitations:**
+  - Delay in status changes might lead to confusion or loss of trust.
+  
+- **Failover Strategies:**
+  - Implement a cache layer to store recent application statuses.
+  
+- **Recommendations:**
+  - Notify candidates whenever there is a status change through email/SMS.
+
+- **Components Involved:**
+  - **Frontend:** Application Dashboard
+  - **Backend:**
+    - **Job Application Service**
+    - **Notification Service**
+  - **Database:**
+    - **Job Application Database**
+  
+- **Sequence Diagram:**
+  - Candidate opens the dashboard -> Retrieve Application Status -> Display to Candidate.
+
+---
+
+#### **4. Receive Interview Invites**
+- **Data/Operation Flow:**
+  - **Input:** Employer schedules an interview for the candidate.
+  - **Process:**
+    1. Employer schedules an interview and updates the Job Application Database.
+    2. A notification trigger is created for the Notification Service.
+    3. The Interview Scheduler sends a detailed invitation email to the candidate.
+  - **Output:** Interview invitation with date, time, and location or video conference link.
+
+- **Corner Cases:**
+  - Candidate misses the interview due to timezone mismatches.
+  - Conflicts in scheduling multiple interviews.
+
+- **Issues and Limitations:**
+  - Miscommunication between employer and candidate about interview schedules.
+  
+- **Failover Strategies:**
+  - Automatically check for potential scheduling conflicts.
+  - Provide rescheduling options for the candidate.
+
+- **Recommendations:**
+  - Include timezone conversion in the interview invite.
+  - Implement a reminder system for upcoming interviews.
+
+- **Components Involved:**
+  - **Frontend:** Interview Management Interface
+  - **Backend:**
+    - **Job Application Service**
+    - **Interview Scheduler**
+  - **Database:**
+    - **Job Application Database**
+  - **Notification Service:** For sending invites and reminders.
+  
+- **Sequence Diagram:**
+  - Employer schedules -> Update Application Record -> Create Notification -> Send Invite.
+
+---
+
+#### **5. Withdraw from an Application**
+- **Data/Operation Flow:**
+  - **Input:** Candidate selects “Withdraw” for a specific job application.
+  - **Process:**
+    1. Confirm the candidate’s intention to withdraw.
+    2. Update the Job Application Database to reflect the withdrawal.
+    3. Notify the employer of the change.
+  - **Output:** Withdrawal confirmation and employer notified.
+
+- **Corner Cases:**
+  - Candidate withdraws by mistake and wants to reapply.
+  - Employer has already scheduled an interview.
+
+- **Issues and Limitations:**
+  - Managing withdrawal requests after interview scheduling.
+  
+- **Failover Strategies:**
+  - Store the withdrawal request temporarily and queue the database update.
+  
+- **Recommendations:**
+  - Provide a short grace period for the candidate to undo the withdrawal.
+
+- **Components Involved:**
+  - **Frontend:** Application Management Interface
+  - **Backend:**
+    - **Job Application Service**
+  - **Database:**
+    - **Job Application Database**
+  - **Notification Service:** For employer updates.
+
+- **Sequence Diagram:**
+  - Candidate withdraws -> Confirm Intention -> Update Application Record -> Notify Employer -> Candidate Confirmation.
+
+---
+
+This detailed approach provides an in-depth view of each candidate management use case and how ClearView's various components interact, ensuring reliability, availability, and consistency in handling candidate data and activities.
 ---
 
 ### **Summary of Key Components in Candidate Management**
