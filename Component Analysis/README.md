@@ -144,4 +144,8 @@ For ClearView, the main components are categorized into **Frontend**, **Backend*
 | **Cloud Infrastructure**             | AWS, Azure, GCP, Kubernetes          |
 | **Monitoring and Logging**           | Prometheus, ELK Stack, Grafana       |
 
+
+## System Design
+![image](https://github.com/user-attachments/assets/195a18b7-ed31-4141-a544-ddb2d0400e13)
+
 This breakdown provides a comprehensive view of the components involved in ClearView and their corresponding technologies, making it easier to understand how each part fits into the overall architecture.
