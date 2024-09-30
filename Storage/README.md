@@ -1,5 +1,7 @@
 ### **Storage Estimation for ClearView HR System**
 
+__DB Schema__: https://github.com/bindubc/ClearViewSystem/blob/main/Storage/DB%20Schema.md 
+
 When estimating storage, consider the type of data stored, the expected volume, and how long the data will be retained. For ClearView, storage requirements will include candidate profiles, anonymized data, job postings, system logs, metadata, analytics data, and audit trails. Below is a detailed estimation for each data category:
 
 ---
