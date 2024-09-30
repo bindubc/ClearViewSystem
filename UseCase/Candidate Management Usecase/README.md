@@ -267,6 +267,9 @@ The system analyzes candidate profiles to match them with job descriptions.
    - Generates similarity scores and stores them in **Match Results Database**.
 3. Returns results to the candidate.
 
+   ![image](https://github.com/user-attachments/assets/f36f9667-374c-4733-9da0-76e5153aeba1)
+
+
 #### **Involved Components**
 - **Matching Service**
 - **Job Database**
@@ -323,9 +326,7 @@ Candidates can apply for jobs through the platform.
 #### **Data/Operation Flow**
 1. **Candidate** submits an application.
 2. **API Gateway** forwards request to **Application Service**.
-3. **Application Service** stores application
-
- in **Application Database**.
+3. **Application Service** stores application in **Application Database**.
 4. Sends confirmation email via **Notification Service**.
 
 #### **Involved Components**
