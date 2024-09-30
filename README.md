@@ -118,7 +118,8 @@ These components form a cohesive architecture for the ClearView platform, enabli
 
 <a name="characteristics"></a>
 ## Identifying architecture characteristics
-   
+
+   **Reference** : https://github.com/bindubc/ClearViewSystem/blob/main/ArchitectureCharacteristics/README.md 
 Choosing the right architectural characteristics is a critical process that lays the foundation for designing an effective architecture and defining efficient data flow within a system. By carefully considering these characteristics, one can determine the most suitable software and hardware components to effectively fulfill the system requirements. This ensures not only the proper functioning of the system but also its scalability, maintainability, and overall performance. Based on the requirements and our expertise, the following top three characteristics have been identified:
 
 ![image](https://github.com/user-attachments/assets/bb7da18d-a07e-40cb-9abd-84f148c0c160)
@@ -167,8 +168,26 @@ These architectural characteristics are essential for ensuring that the ClearVie
 
 ## Designing the Architecture
 
-* [__Context view__](./C4/ContextDiagram.md)
-* [__Container view__](./C4/ContainerDiagram.md)
-* [__component_view__](./ComponentDiagram.md)
+* [__Context View__](./C4/ContextDiagram.md)
+* [__Container View__](./C4/ContainerDiagram.md)
+* [__component View__](./ComponentDiagram.md)
+
+  ## Architecture
+
+  * __UserJourney__: https://github.com/bindubc/ClearViewSystem/blob/main/UserJourney.md 
+  * __Usecase__: https://github.com/bindubc/ClearViewSystem/tree/main/UseCase
+  * __Fitness Function__: https://github.com/bindubc/ClearViewSystem/tree/main/Fitness%20Function
+  * __DB Schema__: https://github.com/bindubc/ClearViewSystem/blob/main/Storage/DB%20Schema.md
+  * __Storage Estimation__: https://github.com/bindubc/ClearViewSystem/blob/main/Storage/README.md
+  * __Deployment__: https://github.com/bindubc/ClearViewSystem/blob/main/deployment.md 
+
+   
+  ![image](https://github.com/user-attachments/assets/8f4dc98e-fcd0-478b-aa32-f2463c7c472e)
+
+
+ 
+
+  
+
   
 
