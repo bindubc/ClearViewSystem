@@ -1,7 +1,7 @@
 
 ### **ADR-009: Fault Tolerance and High Availability (HA) Strategy**
 - **Status:** Draft
-- **Date:** October 8, 2024
+
 
 #### **Context:**
 Ensuring high availability and fault tolerance is crucial to maintain uninterrupted service during failures. ClearView must implement strategies to handle outages gracefully and provide minimal downtime for critical components.
