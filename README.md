@@ -182,13 +182,13 @@ These architectural characteristics are essential for ensuring that the ClearVie
 
   ## Architecture
 
-  * __UserJourney__: https://github.com/bindubc/ClearViewSystem/blob/main/UserJourney.md 
-  * __Usecase with API Flow and its Operations__: https://github.com/bindubc/ClearViewSystem/tree/main/UseCase
-  * __Component Analysis__: https://github.com/bindubc/ClearViewSystem/tree/main/Component%20Analysis 
-  * __Fitness Function__: https://github.com/bindubc/ClearViewSystem/tree/main/Fitness%20Function
-  * __DB Schema__: https://github.com/bindubc/ClearViewSystem/blob/main/Storage/DB%20Schema.md
-  * __Storage Estimation__: https://github.com/bindubc/ClearViewSystem/blob/main/Storage/README.md
-  * __Deployment__: https://github.com/bindubc/ClearViewSystem/blob/main/deployment.md 
+  * [__UserJourney__](https://github.com/bindubc/ClearViewSystem/blob/main/UserJourney.md)
+  * [__Usecase with API Flow and its Operations__](https://github.com/bindubc/ClearViewSystem/tree/main/UseCase)
+  * [__Component Analysis__](https://github.com/bindubc/ClearViewSystem/tree/main/Component%20Analysis)
+  * [__Fitness Function__](https://github.com/bindubc/ClearViewSystem/tree/main/Fitness%20Function)
+  * [__DB Schema__](https://github.com/bindubc/ClearViewSystem/blob/main/Storage/DB%20Schema.md)
+  * [__Storage Estimation__](https://github.com/bindubc/ClearViewSystem/blob/main/Storage/README.md)
+  * [__Deployment__](https://github.com/bindubc/ClearViewSystem/blob/main/deployment.md)
 
    ## System Design
   
