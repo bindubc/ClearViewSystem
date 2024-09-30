@@ -1,5 +1,7 @@
 Here's an in-depth exploration of **Candidate Management Use Cases**, detailing Architectural Decision Records (ADRs), APIs, characteristics, data/operation flows, involved components, storage estimations, failover considerations, recommendations, and discussions around consistency, resiliency, availability, partition issues, and solutions.
 
+Disclaimer:  A portion of the flow is depicted in the diagram on these pages, which is a draft copy. The MainReadme Page contains the whole diagram. Design: [Architecture]()
+
 ### **Candidate Management Use Cases Deep Dive**
 
 ---
@@ -329,6 +331,9 @@ Candidates can apply for jobs through the platform.
 3. **Application Service** stores application in **Application Database**.
 4. Sends confirmation email via **Notification Service**.
 
+  ![image](https://github.com/user-attachments/assets/c9bdc4ec-0650-4e60-8678-d3c3dfa03a94)
+
+
 #### **Involved Components**
 - **Candidate Interface**
 - **API Gateway**
@@ -398,6 +403,9 @@ Candidates can schedule interviews for job applications they have submitted.
    - Schedules the interview using the **Calendar API**.
    - Stores the interview details in **Interview Database**.
 4. Sends confirmation notifications to both the candidate and the recruiter.
+
+   ![image](https://github.com/user-attachments/assets/3967772e-ee3b-4391-8ca4-457aaaa24e8f)
+
 
 #### **Involved Components**
 - **Candidate Interface**
@@ -469,6 +477,9 @@ The system allows recruiters to collect feedback on candidates after interviews.
    - Stores feedback in **Feedback Database**.
 4. Sends a confirmation response to the recruiter.
 
+   ![image](https://github.com/user-attachments/assets/739221d4-c77c-4073-9c21-ed31741c8cc9)
+
+
 #### **Involved Components**
 - **Recruiter Interface**
 - **API Gateway**
@@ -526,6 +537,9 @@ The system provides reporting and analytics on the hiring process and candidate 
 2. **API Gateway** directs the request to the **Reporting Service**.
 3. **Reporting Service** aggregates data from **Application Database**, **Feedback Database**, and **Interview Database**.
 4. Generates reports and returns them to the HR manager.
+
+   ![image](https://github.com/user-attachments/assets/9c3877b5-0907-4d23-b46f-add691a07725)
+
 
 #### **Involved Components**
 - **HR Interface**
