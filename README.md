@@ -15,11 +15,19 @@ This repository contains team's submission to O'Reilly's [Architectural Katas: F
 - [Introduction](#Introduction)
 - [Problem Overview](#ClearView)
 - [ClearView Functional Requirement](#Requirements)
+- [Usecase](https://github.com/bindubc/ClearViewSystem/tree/main/UseCase)
+- [UserJourney](https://github.com/bindubc/ClearViewSystem/blob/main/UserJourney.md)
 - [Scrutinizing Component](#ComponentAnalysis)
-- [Architectiure Characteristics](#characteristics)
-- [C4 Models]()
-- [ARDs](./ADR/README.md)
-  - [000. Use ADR]((./ADR/README.md))
+- [Deployment](https://github.com/bindubc/ClearViewSystem/blob/main/deployment.md)
+- [Component Analysis](https://github.com/bindubc/ClearViewSystem/tree/main/Component%20Analysis)
+- [Architectiure NonFunctional](#characteristics)
+- [Architectiure Characteritics and Functional Requirement Anaalysis](https://github.com/bindubc/ClearViewSystem/tree/main/ArchitectureCharacteristics)
+- [API](https://github.com/bindubc/ClearViewSystem/tree/main/API)
+- [C4 Models](https://github.com/bindubc/ClearViewSystem/tree/main/C4)
+- [ADR](https://github.com/bindubc/ClearViewSystem/tree/main/ADR)
+- [Fitness Function](https://github.com/bindubc/ClearViewSystem/tree/main/Fitness%20Function)
+- [Storage Estimation](https://github.com/bindubc/ClearViewSystem/tree/main/Storage)
+  
   
 
 <div id="Introduction"></div>
