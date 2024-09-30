@@ -17,7 +17,6 @@ A **component diagram** is a visual representation of the components within a sy
    - **Notification Service**
    - **Reporting and Auditing Service**
    - **Feedback Service**
-   - **Analytics and Reporting Service**
 
 2. **Interfaces**: Interfaces define how components interact with each other. They specify the operations that can be performed and the data that can be exchanged. In the diagram, interfaces are typically depicted as lollipop symbols attached to the components.
 
