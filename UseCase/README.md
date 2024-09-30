@@ -1,3 +1,15 @@
+
+### Component Overview:
+
+- [Candidate  Management Use Cases](https://github.com/bindubc/ClearViewSystem/tree/main/UseCase/Candidate%20Management%20Usecase)
+- [Employer Management Usecase](https://github.com/bindubc/ClearViewSystem/tree/main/UseCase/Employer%20Management%20Use%20Cases)
+- [Administrator Use Cases Overview](https://github.com/bindubc/ClearViewSystem/tree/main/UseCase/Administrator%20Use%20Cases)
+- [DEI Consultant use cases](https://github.com/bindubc/ClearViewSystem/tree/main/UseCase/DEI%20Consultant%20Use%20Cases)
+- [Integration Usecase](https://github.com/bindubc/ClearViewSystem/tree/main/UseCase/Integration%20Use%20Cases)
+- [Notification Usecase](https://github.com/bindubc/ClearViewSystem/tree/main/UseCase/Notification%20Use%20Cases)
+- [Auditing and Reporting Usecase](https://github.com/bindubc/ClearViewSystem/tree/main/UseCase/Reporting)
+- [Security](https://github.com/bindubc/ClearViewSystem/tree/main/UseCase/Security)
+
 ### **List of Use Cases for ClearView HR System**
 
 #### **1. Candidate Management Use Cases**
