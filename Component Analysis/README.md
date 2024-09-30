@@ -4,21 +4,24 @@ For ClearView, the main components are categorized into **Frontend**, **Backend*
 1. [Problem Analysis](https://github.com/bindubc/ClearViewSystem/blob/main/Component%20Analysis/Problem%20Analysis.md)
 2. [Implementation Strategy](https://github.com/bindubc/ClearViewSystem/blob/main/Component%20Analysis/planning%20%26%20Implementation%20Strategy.md)
 3. [Algorithm](https://github.com/bindubc/ClearViewSystem/blob/main/Component%20Analysis/algorthim.md)
-4. [UI and Backend Analysis](https://github.com/bindubc/ClearViewSystem/blob/main/Component%20Analysis/UIAndBackend_component_Analysis.md)
-5. [Candidate Management Service](https://github.com/bindubc/ClearViewSystem/blob/main/Component%20Analysis/User%20Management%20or%20Candidate%20Service.md)
-6. [Job Management and Interview Management Service](https://github.com/bindubc/ClearViewSystem/blob/main/Component%20Analysis/JObManagementAndIntervieManagementService.md)
-7. [Matching Service](https://github.com/bindubc/ClearViewSystem/blob/main/Component%20Analysis/MatchingService.md)
-8. [Resume Service](https://github.com/bindubc/ClearViewSystem/blob/main/Component%20Analysis/ResumeService.md)
-9. [Anonymization Service](https://github.com/bindubc/ClearViewSystem/blob/main/Component%20Analysis/Anonymization%20Service.md)
-10. [ATS Service](https://github.com/bindubc/ClearViewSystem/blob/main/Component%20Analysis/ATS%20Integration%20Service.md)
-11. [FeebBack Service](https://github.com/bindubc/ClearViewSystem/blob/main/Component%20Analysis/FeebackService.md)
-12. [Notification Service](https://github.com/bindubc/ClearViewSystem/blob/main/Component%20Analysis/Notification%20Service.md)
-13. [Reporting Service](https://github.com/bindubc/ClearViewSystem/blob/main/Component%20Analysis/ReportingService.md)
-14. [Application Service](https://github.com/bindubc/ClearViewSystem/blob/main/Component%20Analysis/ApplicationService.md)
-15. [External HR System Integration](https://github.com/bindubc/ClearViewSystem/blob/main/Component%20Analysis/ExternalHRSystem.md)
-16. [External System Integration](https://github.com/bindubc/ClearViewSystem/blob/main/Component%20Analysis/ExternalSystemIntegration.md)
+4. [Glimpse of Component](#s1)
+6. [UI and Backend Analysis](https://github.com/bindubc/ClearViewSystem/blob/main/Component%20Analysis/UIAndBackend_component_Analysis.md)
+7. [Candidate Management Service](https://github.com/bindubc/ClearViewSystem/blob/main/Component%20Analysis/User%20Management%20or%20Candidate%20Service.md)
+8. [Job Management and Interview Management Service](https://github.com/bindubc/ClearViewSystem/blob/main/Component%20Analysis/JObManagementAndIntervieManagementService.md)
+9. [Matching Service](https://github.com/bindubc/ClearViewSystem/blob/main/Component%20Analysis/MatchingService.md)
+10. [Resume Service](https://github.com/bindubc/ClearViewSystem/blob/main/Component%20Analysis/ResumeService.md)
+11. [Anonymization Service](https://github.com/bindubc/ClearViewSystem/blob/main/Component%20Analysis/Anonymization%20Service.md)
+12. [ATS Service](https://github.com/bindubc/ClearViewSystem/blob/main/Component%20Analysis/ATS%20Integration%20Service.md)
+13. [FeebBack Service](https://github.com/bindubc/ClearViewSystem/blob/main/Component%20Analysis/FeebackService.md)
+14. [Notification Service](https://github.com/bindubc/ClearViewSystem/blob/main/Component%20Analysis/Notification%20Service.md)
+15. [Reporting Service](https://github.com/bindubc/ClearViewSystem/blob/main/Component%20Analysis/ReportingService.md)
+16. [Application Service](https://github.com/bindubc/ClearViewSystem/blob/main/Component%20Analysis/ApplicationService.md)
+17. [External HR System Integration](https://github.com/bindubc/ClearViewSystem/blob/main/Component%20Analysis/ExternalHRSystem.md)
+18. [External System Integration](https://github.com/bindubc/ClearViewSystem/blob/main/Component%20Analysis/ExternalSystemIntegration.md)
+19. [Technologies for Each Component](#s2)
 
-### **ClearView Component List**
+<a name="s1"></a>
+### ** Glimpse of ClearView Component List with Tech**
 
 #### **1. Frontend Components**
 - **User Interface (UI) Layer**
@@ -117,7 +120,7 @@ For ClearView, the main components are categorized into **Frontend**, **Backend*
   - Uses Prometheus for monitoring and ELK (Elasticsearch, Logstash, and Kibana) stack for logging and visualizations.
 
 ---
-
+<a name="s2"></a>
 ### **Technologies for Each Component**
 
 | **Component**                       | **Technology**                       |
