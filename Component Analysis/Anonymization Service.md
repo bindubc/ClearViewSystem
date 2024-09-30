@@ -4,7 +4,7 @@
 
 1. [Overview of Anonymization Service](#s1)
     -  [Communication with AI Services](#s4)
-    - [Data/Operation Flow[(#s5)
+    - [Data/Operation Flow](#s5)
     - [DataFlow](#s6)
     - [Issues and Resolution](#s7)
 3. [Event-Driven Architecture for AI Triggering](#s2)
