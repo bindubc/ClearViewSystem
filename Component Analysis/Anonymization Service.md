@@ -87,4 +87,100 @@ The Anonymization Service communicates directly with the AI processing engine to
 - Use asynchronous messaging queues between the Anonymization Service and AI Engine to decouple operations and improve fault tolerance.
 - Implement a retry mechanism and circuit breaker pattern to handle failures in downstream AI services.
 
-By following this architecture and flow, the Anonymization Service can effectively ensure compliance and reduce bias in candidate data, while maintaining integration with the AI services for deeper analysis and recommendation.
+
+### **Event-Driven Architecture for AI Triggering:**
+
+The AI job is typically triggered via an event-driven architecture using asynchronous messaging systems like **Kafka**, **RabbitMQ**, or **AWS SNS/SQS** to handle profile updates or resume uploads. 
+
+#### **1. Overview:**
+In an event-driven architecture, different services emit events whenever there is a state change or an important action is completed. For example:
+
+- When a **new candidate profile is created**, the Candidate Profile Service can publish a **`CandidateProfileCreated`** event.
+- When a **resume is uploaded or updated**, the Resume Service can publish a **`ResumeUploaded`** or **`ResumeUpdated`** event.
+
+The AI Processing Service or Anonymization Service can listen to these events and trigger their own processes asynchronously, avoiding tight coupling between services and improving scalability.
+
+#### **2. Example of Events:**
+
+- **`CandidateProfileCreated`:**
+  ```json
+  {
+    "event_id": "123456",
+    "event_type": "CandidateProfileCreated",
+    "profile_id": "abcd-1234-xyz",
+    "timestamp": "2024-09-30T10:00:00Z"
+  }
+  ```
+
+- **`ResumeUploaded`:**
+  ```json
+  {
+    "event_id": "654321",
+    "event_type": "ResumeUploaded",
+    "resume_id": "resume-5678",
+    "profile_id": "abcd-1234-xyz",
+    "file_name": "JohnDoeResume.pdf",
+    "timestamp": "2024-09-30T10:05:00Z"
+  }
+  ```
+
+#### **3. Event Flow:**
+
+- **Step 1: Candidate Profile Service / Resume Service Emits Events:**
+  - When a new profile is created or a resume is uploaded, the respective service publishes an event to a message broker (e.g., Kafka Topic `CandidateEvents`).
+
+- **Step 2: Anonymization Service / AI Processing Service Subscribes to Events:**
+  - The Anonymization Service listens to relevant events (`CandidateProfileCreated`, `ResumeUploaded`) to start processing the profile data.
+  - An **Event Processor** component in the AI Service processes these events to initiate further actions, like extracting skills or matching against job descriptions.
+
+- **Step 3: Triggering AI Jobs:**
+  - When an event is detected, the AI Service pulls the relevant data (either raw or anonymized) and initiates the AI job.
+  - The job may involve multiple steps, such as parsing the resume, extracting key information, or generating recommendations.
+
+- **Step 4: Update and Notify:**
+  - Once the AI job completes, the processed data is updated back in the database, and a **`ProfileProcessed`** or **`ResumeProcessed`** event is emitted.
+  - This allows downstream services to react, such as notifying the candidate about the status update.
+
+#### **4. Benefits of Event-Driven Architecture:**
+1. **Decoupling:** Services operate independently and are loosely coupled.
+2. **Scalability:** Components can scale independently based on the number of events.
+3. **Resilience:** If a service fails, the events can be reprocessed later.
+4. **Flexibility:** Easily add new consumers to react to events without changing the existing flow.
+
+#### **5. Example Event Flow Using Kafka:**
+
+- **Event Producer (Candidate Profile Service):**
+  ```python
+  # Pseudocode Example for Publishing an Event
+  from kafka import KafkaProducer
+  import json
+
+  producer = KafkaProducer(bootstrap_servers='localhost:9092',
+                           value_serializer=lambda v: json.dumps(v).encode('utf-8'))
+
+  event = {
+      "event_id": "123456",
+      "event_type": "CandidateProfileCreated",
+      "profile_id": "abcd-1234-xyz",
+      "timestamp": "2024-09-30T10:00:00Z"
+  }
+
+  producer.send('CandidateEvents', value=event)
+  producer.flush()
+  ```
+
+- **Event Consumer (Anonymization Service):**
+  ```python
+  from kafka import KafkaConsumer
+
+  consumer = KafkaConsumer('CandidateEvents',
+                           bootstrap_servers='localhost:9092',
+                           value_deserializer=lambda m: json.loads(m.decode('utf-8')))
+
+  for message in consumer:
+      event = message.value
+      if event['event_type'] == 'CandidateProfileCreated':
+          process_profile(event['profile_id'])  # Initiate anonymization or AI job
+  ```
+
+
