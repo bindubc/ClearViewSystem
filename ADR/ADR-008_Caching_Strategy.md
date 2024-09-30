@@ -1,6 +1,6 @@
 ### **ADR-008: Caching Strategy**
 - **Status:** Decided
-- **Date:** October 1, 2024
+
 
 #### **Context:**
 Caching is essential to improve API performance and reduce the load on primary databases, especially when handling high volumes of candidate and employer profile queries. The cache should ensure data freshness while minimizing latency in response times.
