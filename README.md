@@ -168,20 +168,22 @@ These architectural characteristics are essential for ensuring that the ClearVie
 
 ## Designing the Architecture
 
-* [__Context View__](./C4/ContextDiagram.md)
-* [__Container View__](./C4/ContainerDiagram.md)
-* [__component View__](./ComponentDiagram.md)
+* [__Context View__](https://github.com/bindubc/ClearViewSystem/blob/main/C4/ContextDiagram.md)
+* [__Container View__](https://github.com/bindubc/ClearViewSystem/blob/main/C4/Container.md)
+* [__component View__](https://github.com/bindubc/ClearViewSystem/blob/main/C4/Component%20Diagram.md)
 
   ## Architecture
 
   * __UserJourney__: https://github.com/bindubc/ClearViewSystem/blob/main/UserJourney.md 
   * __Usecase__: https://github.com/bindubc/ClearViewSystem/tree/main/UseCase
+  * __Component Analysis__: https://github.com/bindubc/ClearViewSystem/tree/main/Component%20Analysis 
   * __Fitness Function__: https://github.com/bindubc/ClearViewSystem/tree/main/Fitness%20Function
   * __DB Schema__: https://github.com/bindubc/ClearViewSystem/blob/main/Storage/DB%20Schema.md
   * __Storage Estimation__: https://github.com/bindubc/ClearViewSystem/blob/main/Storage/README.md
   * __Deployment__: https://github.com/bindubc/ClearViewSystem/blob/main/deployment.md 
 
-   
+   ## Complete Operation Flow of ClearView
+  
   ![image](https://github.com/user-attachments/assets/8f4dc98e-fcd0-478b-aa32-f2463c7c472e)
 
 
