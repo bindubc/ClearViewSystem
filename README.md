@@ -69,6 +69,14 @@ ClearView's HR platform leverages AI to construct personalized, data-driven cand
 
 <div id="Requirements"></div>
 
+### Problem Statements
+
+The problem presented revolves around creating a more inclusive and unbiased hiring process, addressing issues of diversity and representation in the tech industry, particularly for marginalized communities.
+
+* __Lack of Impactful Metrics__: Identifying and reducing bias in the candidate hiring and interview process is challenging, as current systems lack actionable data to measure and address bias effectively.
+* __Ineffective ATS__: Traditional applicant tracking systems often redundantly fail to match viable candidates to job descriptions, resulting in missed opportunities and inefficient hiring.
+
+
 ### Key Features and Requirements
 
 
@@ -78,6 +86,9 @@ ClearView's HR platform leverages AI to construct personalized, data-driven cand
 * __Data Aggregation and Analysis__: Provides insights into disparities in hiring decisions and generates monthly KPI reports.
 
 ### Problem Statements
+
+The problem presented revolves around creating a more inclusive and unbiased hiring process, addressing issues of diversity and representation in the tech industry, particularly for marginalized communities.
+
 * __Lack of Impactful Metrics__: Identifying and reducing bias in the candidate hiring and interview process is challenging, as current systems lack actionable data to measure and address bias effectively.
 * __Ineffective ATS__: Traditional applicant tracking systems often redundantly fail to match viable candidates to job descriptions, resulting in missed opportunities and inefficient hiring.
 
