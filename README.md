@@ -58,6 +58,7 @@ The Diversity Cyber Council is a non-profit organization dedicated to increasing
 By focusing on these areas, the Diversity Cyber Council seeks to ensure more inclusive participation in the tech sector, helping to close the diversity gap in the industry.
 
 <div id="ClearView"></div>
+
 # ClearView - Transparent Decision Making: HR Platform to Reduce Hiring Bias
 
 ### Overview
