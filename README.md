@@ -86,6 +86,12 @@ The problem presented revolves around creating a more inclusive and unbiased hir
 * __Anonymization__ : AI eliminates identifiers that may introduce bias, ensuring decisions are based on skills and experience.
 * __Data Aggregation and Analysis__: Provides insights into disparities in hiring decisions and generates monthly KPI reports.
 
+
+### Target Users:
+* __Employers__: Companies looking for equitable hiring practices.
+* __Job Candidates__: Professionals seeking a less biased hiring process, where their skills and experience are prioritized.
+* __Administrators__: Platform managers responsible for user registrations, maintaining data analytics, and assisting in bias-reduction strategies for executives.
+
 ### Problem Statements
 
 The problem presented revolves around creating a more inclusive and unbiased hiring process, addressing issues of diversity and representation in the tech industry, particularly for marginalized communities.
