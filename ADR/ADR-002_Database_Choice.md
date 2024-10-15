@@ -8,7 +8,8 @@
    - **Options**:
      - **SQL (PostgreSQL)**: Strong consistency and robust querying capabilities.
      - **NoSQL (MongoDB)**: Flexible schema and high scalability.
-   - **Decision**: Use MongoDB for candidate data storage.
+     - **Blob/Object Storage (AWS S3)**: Useful for storing objects like files(resumes in this case)
+   - **Decision**: Use PostgreSQL for structured data, MongoDB for semi and unstructured data and AWS S3 for object storage.
    - **Implications**: Need to ensure data integrity and handle eventual consistency.
    - **Failover Strategy**: Utilize MongoDB's replica sets and sharding for high availability and horizontal scaling.
    - **Resolution for Issues**: Establish data validation and consistency checks to mitigate issues related to eventual consistency.
