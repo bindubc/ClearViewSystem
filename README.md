@@ -1,6 +1,8 @@
 # Architectural-Katas-Fall-2024
 <img src="https://cdn.oreillystatic.com/images/live-online-training/og-ak-social.png" alt="drawing" width="1000" height="400"/>
 
+Welcome to the architectural story of ClearView - the O'Reilly Fall 2024 Architectural Kata.
+
 This repository contains team's submission to O'Reilly's [Architectural Katas: Fall 2024](https://www.oreilly.com/live-events/architectural-katas-fall-2024/0642572006974)
 
 ## Team
@@ -34,7 +36,10 @@ This repository contains team's submission to O'Reilly's [Architectural Katas: F
 
 ## Introduction
 
-Welcome to the architectural story of ClearView - the O'Reilly Fall 2024 Architectural Kata.
+
+The need for a more inclusive and equitable hiring process has become increasingly urgent, particularly in the tech industry, where underrepresented groups, such as women, people of color, and individuals from marginalized communities, continue to face significant barriers to entry. Despite growing awareness and efforts around diversity and inclusion, systemic issues persist. Traditional hiring practices, often driven by implicit bias, contribute to these challenges by focusing on surface-level attributes like names or backgrounds, which can lead to biased decisions. Without proper tools or metrics to assess the fairness of these processes, companies struggle to create a truly inclusive workforce.
+
+In this context, there is a clear need for platforms like **ClearView**, which leverages AI to remove identifiers that could introduce bias and emphasize candidates' skills and qualifications. By anonymizing candidates and aligning resumes with job requirements based on SMART (Specific, Measurable, Achievable, Relevant, Time-bound) goals, ClearView ensures that hiring decisions are based on merit, reducing the likelihood of unconscious bias. Additionally, organizations like the **Diversity Cyber Council** address the broader need by providing access to education, training, and job placement for underrepresented demographics. Together, these initiatives support a more diverse and inclusive talent pipeline, crucial for addressing the diversity gap in the tech industry.
 
 ### Company Overiew
 
