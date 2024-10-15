@@ -24,6 +24,9 @@
    * Analyze Hiring Metrics
    * Review Bias Metrics
 #### Job Candidate Use Cases
+
+![image](https://github.com/user-attachments/assets/b5e62f2d-3cb4-44ac-bfa1-88fa954696d4)
+
 * Register and Create Profile
    * Create Job Seeker Account
    * Upload Resume and Demographic Information
