@@ -1,4 +1,7 @@
 #### Employer User Journey
+
+![image](https://github.com/user-attachments/assets/fc9350ae-ca2d-44e2-b516-2b61eb4e7805)
+
 *  Register on the Platform
     * Create Employer Account
     * Complete Company Profile
