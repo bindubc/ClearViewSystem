@@ -1,6 +1,7 @@
 #### Employer User Journey
 
-![image](https://github.com/user-attachments/assets/fc9350ae-ca2d-44e2-b516-2b61eb4e7805)
+
+ ![image](https://github.com/user-attachments/assets/c206cdec-2723-400a-89b0-42b00a628a0d)
 
 *  Register on the Platform
     * Create Employer Account
