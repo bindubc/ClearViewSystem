@@ -1,191 +1,238 @@
-To build ClearView, the architecture and repo structure should be modular and scalable to accommodate different components such as AI, anonymization, backend, frontend, and analytics. Below is a proposed **repository structure** for ClearView's architecture:
+To implement ClearView's core components efficiently, it's essential to select the appropriate coding patterns and algorithms. This will ensure scalability, maintainability, and performance, especially considering AI-powered services, event-driven architecture, and distributed systems. Here’s an overview of coding patterns and algorithms relevant to the various ClearView components:
 
-### 1. **Top-Level Structure**
+### 1. **Coding Patterns by Component**
 
-```
-clearview/
-│
-├── backend/              # Backend services and APIs
-├── frontend/             # Frontend application code
-├── ai-services/          # AI models, job matching, and anonymization
-├── data/                 # Data models, databases, and migration scripts
-├── analytics/            # Analytics service for reports and bias detection
-├── devops/               # CI/CD, Kubernetes, Docker, and infrastructure as code
-├── docs/                 # Documentation
-├── tests/                # Unit and integration tests
-├── config/               # Configuration files (environment variables, API keys, etc.)
-└── scripts/              # Utility scripts
-```
+#### 1.1 **Anonymization Service**
+- **Pattern**: **Decorator Pattern**
+  - **Reason**: The decorator pattern can be used to modify existing resume parsing functionality with anonymization logic without altering the core parsing workflow.
+  - **Flow**: 
+    - Resume data is parsed.
+    - Anonymization decorator is applied to remove PII.
+    - The result is sent back for further AI processing or storage.
+  - **Example**:
+    ```python
+    class ResumeParser:
+        def parse(self, resume_text):
+            # Core parsing logic
+            return parsed_data
 
-### 2. **Detailed Structure**
+    class AnonymizerDecorator:
+        def __init__(self, resume_parser):
+            self.resume_parser = resume_parser
 
-#### 2.1 **Backend (`backend/`)**
-Handles API endpoints, business logic, user authentication, and service integration. Built using **Node.js/Express** or **Python/Django/Flask**, depending on tech preference.
+        def parse(self, resume_text):
+            parsed_data = self.resume_parser.parse(resume_text)
+            anonymized_data = self.anonymize(parsed_data)
+            return anonymized_data
 
-```
-backend/
-├── src/
-│   ├── controllers/          # API endpoints and route controllers
-│   ├── services/             # Core business logic and service classes
-│   ├── models/               # Database models and schemas
-│   ├── middlewares/          # Authentication, authorization, and validation middleware
-│   ├── utils/                # Utility functions (logging, error handling, etc.)
-│   └── routes/               # API route definitions
-├── app.js                    # Application entry point
-└── package.json              # Backend dependencies and scripts
-```
+        def anonymize(self, parsed_data):
+            # Anonymization logic here
+            return anonymized_data
+    ```
 
-**Backend services:**
-- **Auth Service**: Handles user authentication, RBAC, and session management.
-- **Candidate Service**: Manages job seeker profiles, resumes, and applications.
-- **Employer Service**: Manages job postings and employer-related functionality.
-- **Interview Service**: Schedules interviews, handles surveys, and feedback collection.
-- **Analytics Service**: Communicates with the analytics microservice for generating reports.
+#### 1.2 **Resume Parsing and Recommendation Service**
+- **Pattern**: **Strategy Pattern**
+  - **Reason**: Allows for flexible integration of different resume parsing and recommendation algorithms depending on input data or customer-specific rules.
+  - **Flow**:
+    - Based on the type of resume, a different parsing strategy is chosen (e.g., NLP-based, rule-based).
+    - After parsing, different recommendation strategies (AI-based or heuristic) are applied.
+  - **Example**:
+    ```python
+    class ResumeParser:
+        def __init__(self, strategy):
+            self.strategy = strategy
 
-#### 2.2 **Frontend (`frontend/`)**
-Handles the user interface for job seekers, employers, and admins. Built using **React.js** or **Vue.js** with a component-based architecture.
+        def parse(self, resume_text):
+            return self.strategy.parse(resume_text)
 
-```
-frontend/
-├── src/
-│   ├── components/           # Reusable UI components
-│   ├── pages/                # Page-level components (e.g., job postings, profile view)
-│   ├── services/             # API calls to backend services
-│   ├── state/                # State management (e.g., Redux or Vuex)
-│   ├── assets/               # Static files like images, fonts, etc.
-│   └── utils/                # Helper functions and constants
-├── public/                   # Public HTML files
-├── package.json              # Frontend dependencies and scripts
-└── webpack.config.js         # Webpack configuration for building the frontend
-```
+    class NLPParserStrategy:
+        def parse(self, resume_text):
+            # NLP-based parsing logic
+            return parsed_data
 
-**Frontend features:**
-- **Dashboard**: For both job seekers and employers.
-- **Resume Upload**: For candidates to upload and view anonymized resumes.
-- **Job Matching**: Displays job postings with similarity scores for candidates.
-- **Interview Feedback**: Enables candidates and interviewers to fill out feedback surveys.
+    class RuleBasedParserStrategy:
+        def parse(self, resume_text):
+            # Rule-based parsing logic
+            return parsed_data
+    ```
 
-#### 2.3 **AI Services (`ai-services/`)**
-Houses all AI and ML functionalities such as resume parsing, job matching, and bias detection. Can be built with **Python** (using frameworks like **TensorFlow** or **PyTorch** for machine learning models).
+#### 1.3 **Notification Service**
+- **Pattern**: **Observer Pattern / Event-Driven Architecture**
+  - **Reason**: Event-driven architecture allows notifications to be sent automatically when a specific event occurs, such as job application status changes or interview scheduling.
+  - **Flow**:
+    - When an event occurs, observers (notification services) are notified, and the relevant notification is sent.
+  - **Example**:
+    ```python
+    class EventManager:
+        def __init__(self):
+            self.subscribers = []
 
-```
-ai-services/
-├── models/                  # Pretrained models for job matching, anonymization, and feedback analysis
-├── pipelines/               # ETL (Extract, Transform, Load) pipelines for training data
-├── resume-parsing/          # Code for parsing resumes and generating S.M.A.R.T goals
-├── job-matching/            # Job matching algorithms based on qualifications and requirements
-├── bias-detection/          # AI algorithms for identifying potential bias in hiring practices
-├── model-serving/           # Code for serving models via APIs (e.g., Flask, FastAPI)
-└── requirements.txt         # Dependencies for AI services
-```
+        def subscribe(self, subscriber):
+            self.subscribers.append(subscriber)
 
-**AI features:**
-- **Resume Anonymization**: Strips identifiable information like name, gender, and age.
-- **Job Matching**: Uses natural language processing (NLP) to align job descriptions with candidate qualifications.
-- **Bias Detection**: Analyzes patterns in hiring data for bias in selection processes.
-  
-#### 2.4 **Data (`data/`)**
-Handles all the databases, data models, and migration scripts.
+        def notify(self, event):
+            for subscriber in self.subscribers:
+                subscriber.update(event)
 
-```
-data/
-├── migrations/               # Database migration files (e.g., Flyway, Alembic)
-├── models/                   # ORM models (e.g., Sequelize, SQLAlchemy)
-├── seeds/                    # Seed data for initial database population
-└── database_config.js        # Database connection settings (e.g., PostgreSQL, MySQL)
-```
+    class NotificationService:
+        def update(self, event):
+            # Send notification based on event
+            send_notification(event)
+    ```
 
-**Databases**:
-- **PostgreSQL** or **MySQL**: For storing candidate profiles, job postings, and interview feedback.
-- **NoSQL (e.g., MongoDB)**: For storing unstructured data like feedback text or resume analysis.
+#### 1.4 **Job Matching Service (AI)**
+- **Pattern**: **Chain of Responsibility**
+  - **Reason**: Multiple steps are involved in job matching, such as parsing resumes, analyzing job descriptions, scoring, and suggesting jobs. The Chain of Responsibility allows each step to process the input and pass it along to the next.
+  - **Flow**:
+    - Resume data is processed through multiple stages (e.g., parsing, AI-based matching, scoring).
+  - **Example**:
+    ```python
+    class MatchingHandler:
+        def __init__(self, next_handler=None):
+            self.next_handler = next_handler
 
-#### 2.5 **Analytics (`analytics/`)**
-Handles data aggregation, KPI reporting, and bias analysis using data visualization and statistical tools. Technologies like **Python** with **Pandas**, **NumPy**, **Matplotlib**, or **Plotly** could be used.
+        def handle(self, resume, job_desc):
+            result = self.match(resume, job_desc)
+            if self.next_handler:
+                return self.next_handler.handle(resume, job_desc)
+            return result
 
-```
-analytics/
-├── src/
-│   ├── reports/              # Scripts for generating monthly hiring reports
-│   ├── data-aggregation/     # Services for aggregating hiring and demographic data
-│   ├── visualization/        # Visualization of bias detection and other analytics
-└── requirements.txt          # Dependencies for analytics
-```
+        def match(self, resume, job_desc):
+            # Matching logic here
+            return score
+    ```
 
-#### 2.6 **DevOps (`devops/`)**
-Contains infrastructure as code (IaC), CI/CD pipelines, and containerization configurations. Built with **Docker**, **Kubernetes**, and **CI/CD tools** like **Jenkins**, **GitHub Actions**, or **CircleCI**.
+#### 1.5 **Feedback Service**
+- **Pattern**: **Template Method Pattern**
+  - **Reason**: Standardizes the workflow for collecting and processing feedback, with some steps customizable depending on the type of feedback (anonymous or not).
+  - **Flow**:
+    - A common template is used to collect feedback.
+    - Depending on feedback type, it’s processed differently (e.g., anonymized or not).
+  - **Example**:
+    ```python
+    class FeedbackTemplate:
+        def submit_feedback(self, feedback):
+            feedback = self.collect_feedback(feedback)
+            feedback = self.process_feedback(feedback)
+            self.store_feedback(feedback)
 
-```
-devops/
-├── docker/                   # Docker configuration files for containerization
-├── k8s/                      # Kubernetes configuration files (e.g., deployments, services)
-├── ci-cd/                    # CI/CD pipeline configurations (e.g., Jenkinsfile, GitHub Actions)
-├── terraform/                # Infrastructure as code using Terraform for cloud resources
-└── monitoring/               # Monitoring and logging configurations (e.g., Prometheus, ELK Stack)
-```
+        def collect_feedback(self, feedback):
+            # Feedback collection logic
+            return feedback
 
-#### 2.7 **Docs (`docs/`)**
-Contains project documentation, API specifications, and onboarding guides.
+        def process_feedback(self, feedback):
+            # Optional processing (anonymization, etc.)
+            return feedback
+    ```
 
-```
-docs/
-├── api/                      # API documentation (e.g., OpenAPI specs, Postman collections)
-├── dev-guides/               # Developer setup guides and contribution guidelines
-├── user-manual/              # User guides for job seekers, employers, and admins
-└── architecture.md           # High-level system architecture documentation
-```
+#### 1.6 **Job Application Service**
+- **Pattern**: **Command Pattern**
+  - **Reason**: Each job application or interview scheduling request can be encapsulated as a command. This allows for reusability and the ability to queue or undo operations.
+  - **Flow**:
+    - Users submit a job application, which is treated as a command and processed asynchronously.
+  - **Example**:
+    ```python
+    class ApplyJobCommand:
+        def __init__(self, job_id, user_id):
+            self.job_id = job_id
+            self.user_id = user_id
 
-#### 2.8 **Tests (`tests/`)**
-Houses unit, integration, and end-to-end (E2E) tests for backend, frontend, and AI services.
+        def execute(self):
+            # Logic for applying to a job
+            pass
 
-```
-tests/
-├── unit/                     # Unit tests for backend and AI services
-├── integration/              # Integration tests for API services
-├── e2e/                      # End-to-end tests for frontend and backend
-└── test-config.js            # Testing configuration (e.g., Jest, Mocha)
-```
+    class JobApplicationService:
+        def apply(self, command):
+            command.execute()
+    ```
 
-#### 2.9 **Config (`config/`)**
-Stores configuration files for different environments (development, testing, production).
+### 2. **Algorithms by Component**
 
-```
-config/
-├── dev.env                   # Development environment variables
-├── prod.env                  # Production environment variables
-└── test.env                  # Test environment variables
-```
+#### 2.1 **Resume Matching Algorithm**
+- **Algorithm**: **Cosine Similarity (NLP-based)**
+  - **Use**: To compare job descriptions and resume content.
+  - **How It Works**: Uses vectorization of job descriptions and resumes and calculates the cosine of the angle between them. The closer to 1, the better the match.
+  - **Example**:
+    ```python
+    from sklearn.feature_extraction.text import TfidfVectorizer
+    from sklearn.metrics.pairwise import cosine_similarity
 
-#### 2.10 **Scripts (`scripts/`)**
-Contains utility scripts for database seeding, deployment, and maintenance tasks.
+    def match_resume_to_job(resume, job_desc):
+        vectorizer = TfidfVectorizer()
+        vectors = vectorizer.fit_transform([resume, job_desc])
+        cosine_sim = cosine_similarity(vectors[0], vectors[1])
+        return cosine_sim
+    ```
 
-```
-scripts/
-├── seed-db.sh                # Script to seed the database
-├── deploy.sh                 # Script to deploy the platform to production
-└── migrate.sh                # Script to run database migrations
-```
+#### 2.2 **Anonymization Algorithm**
+- **Algorithm**: **Named Entity Recognition (NER)**
+  - **Use**: Detects and removes personal identifiable information (PII) from resumes.
+  - **How It Works**: Uses pre-trained NER models to identify names, locations, and organizations and replaces them with placeholders.
+  - **Example**:
+    ```python
+    import spacy
 
----
+    nlp = spacy.load("en_core_web_sm")
 
-### **Overall System Design Flow**
+    def anonymize_resume(resume_text):
+        doc = nlp(resume_text)
+        anonymized_text = ""
+        for token in doc:
+            if token.ent_type_ in ['PERSON', 'ORG', 'GPE']:
+                anonymized_text += "[REDACTED] "
+            else:
+                anonymized_text += token.text + " "
+        return anonymized_text
+    ```
 
-1. **User Interaction (Frontend)**:
-   - Job seekers upload resumes.
-   - Employers post job openings.
-   - Both parties interact with dashboards and receive AI-driven insights.
+#### 2.3 **Recommendation Algorithm**
+- **Algorithm**: **Collaborative Filtering**
+  - **Use**: For recommending job roles or resume tips based on user behavior and preferences.
+  - **How It Works**: Collaborative filtering analyzes similarities between users and jobs to make recommendations.
+  - **Example**:
+    ```python
+    from sklearn.neighbors import NearestNeighbors
 
-2. **Backend (API Layer)**:
-   - Handles user requests, communicates with AI services for resume anonymization and matching, manages job postings, and stores data.
+    def recommend_jobs(user_vector, job_vectors):
+        model = NearestNeighbors(n_neighbors=5)
+        model.fit(job_vectors)
+        distances, indices = model.kneighbors([user_vector])
+        return indices
+    ```
 
-3. **AI Services**:
-   - Parse resumes, anonymize candidate data, generate S.M.A.R.T goals, and match jobs.
-   - Perform bias detection on aggregated feedback and hiring data.
+### 3. **Failover and Resiliency**
 
-4. **Data Aggregation and Analytics**:
-   - Collects feedback from interviews, hiring decisions, and demographic data to generate reports.
-   - Provides monthly reports with KPIs and insights on potential biases.
+#### 3.1 **Circuit Breaker Pattern**
+- **Use Case**: To handle service failures gracefully and prevent cascading failures across services.
+- **Flow**: If a service (e.g., AI matching) fails multiple times, the circuit breaker trips and stops further requests until the service is healthy again.
+- **Example**:
+  ```python
+  class CircuitBreaker:
+      def __init__(self):
+          self.failure_count = 0
+          self.max_failures = 5
+          self.state = "CLOSED"
 
-5. **DevOps**:
-   - Containerizes services with Docker, deploys using Kubernetes, and monitors system health using Prometheus/ELK Stack.
+      def call(self, func):
+          if self.state == "OPEN":
+              raise Exception("Service unavailable")
+          try:
+              result = func()
+              self.reset()
+              return result
+          except:
+              self.failure_count += 1
+              if self.failure_count >= self.max_failures:
+                  self.state = "OPEN"
+              raise
 
-This repo structure allows for modular development and scalability, ensuring each component can evolve independently.
+      def reset(self):
+          self.failure_count = 0
+          self.state = "CLOSED"
+  ```
+
+### 4. **Summary**
+
+- **Coding Patterns**: Decorator, Strategy, Observer, Command, and Chain of Responsibility are used to modularize and make the components extensible and testable.
+- **Algorithms**: Cosine Similarity, NER, and Collaborative Filtering are applied in resume matching, anonymization, and recommendations.
+- **Failover**: Circuit Breaker ensures system resiliency, preventing overloading the system when a service is down.
