@@ -2,9 +2,6 @@ To implement ClearView's core components efficiently, it's essential to select t
 
 ### 1. **Coding Patterns by Component**
 
-* Anonymization Service : Decorator Pattern
-* Resume Parsing and Recommendation Service : Strategy Pattern
-
 #### 1.1 **Anonymization Service**
 - **Pattern**: **Decorator Pattern**
   - **Reason**: The decorator pattern can be used to modify existing resume parsing functionality with anonymization logic without altering the core parsing workflow.
