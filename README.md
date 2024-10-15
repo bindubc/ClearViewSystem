@@ -87,11 +87,6 @@ The problem presented revolves around creating a more inclusive and unbiased hir
 * __Data Aggregation and Analysis__: Provides insights into disparities in hiring decisions and generates monthly KPI reports.
 
 
-### Target Users:
-* __Employers__: Companies looking for equitable hiring practices.
-* __Job Candidates__: Professionals seeking a less biased hiring process, where their skills and experience are prioritized.
-* __Administrators__: Platform managers responsible for user registrations, maintaining data analytics, and assisting in bias-reduction strategies for executives.
-
 ### Problem Statements
 
 The problem presented revolves around creating a more inclusive and unbiased hiring process, addressing issues of diversity and representation in the tech industry, particularly for marginalized communities.
@@ -103,6 +98,12 @@ The problem presented revolves around creating a more inclusive and unbiased hir
 ### Component Analysis:
 
 These components form a cohesive architecture for the ClearView platform, enabling it to support user registration, resume processing, job matching, interview management, analytics, and compliance requirements. Each component is designed to be modular, ensuring easy maintenance and scalability.
+
+### Target Users:
+* __Employers__: Companies looking for equitable hiring practices.
+* __Job Candidates__: Professionals seeking a less biased hiring process, where their skills and experience are prioritized.
+* __Administrators__: Platform managers responsible for user registrations, maintaining data analytics, and assisting in bias-reduction strategies for executives.
+
 
 ![image](https://github.com/user-attachments/assets/eb99a1ba-c2af-4cb1-a473-f88ae0bab0e6)
 
