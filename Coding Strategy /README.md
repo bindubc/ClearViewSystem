@@ -1,4 +1,4 @@
-To build ClearView, the architecture and repo structure should be modular and scalable to accommodate different components such as AI, anonymization, backend, frontend, and analytics. Below is a proposed **repository structure** for ClearView's architecture:
+To build ClearView, repo structure should be modular and scalable to accommodate different components such as AI, anonymization, backend, frontend, and analytics. Below is a proposed **repository structure** for ClearView's architecture:
 
 ### 1. **Top-Level Structure**
 
