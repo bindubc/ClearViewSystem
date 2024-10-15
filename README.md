@@ -23,12 +23,14 @@ This repository contains team's submission to O'Reilly's [Architectural Katas: F
 - [Deployment](https://github.com/bindubc/ClearViewSystem/blob/main/deployment.md)
 - [System Design and Component Analysis](https://github.com/bindubc/ClearViewSystem/tree/main/Component%20Analysis)
 - [Architectiure NonFunctional](#characteristics)
+- [Architecture Challenges](https://github.com/bindubc/ClearViewSystem/blob/main/ArchitectureCharacteristics/Challenges.md)
 - [Architectiure Characteritics and Functional Requirement Anaalysis](https://github.com/bindubc/ClearViewSystem/tree/main/ArchitectureCharacteristics)
 - [API](https://github.com/bindubc/ClearViewSystem/tree/main/API)
 - [C4 Models](https://github.com/bindubc/ClearViewSystem/tree/main/C4)
 - [ADR](https://github.com/bindubc/ClearViewSystem/tree/main/ADR)
 - [Fitness Function](https://github.com/bindubc/ClearViewSystem/tree/main/Fitness%20Function)
 - [Storage Estimation](https://github.com/bindubc/ClearViewSystem/tree/main/Storage)
+- [Coding Strategy](https://github.com/bindubc/ClearViewSystem/tree/main/Coding%20Strategy)
   
   
 
