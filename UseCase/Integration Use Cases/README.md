@@ -12,7 +12,7 @@ Let’s dive deeper into the **Integration Use Cases** for the DEI Consultant pl
 ### 1. Use Case: Integrate with HR Systems
 
 #### 1.1 ADR
-- **Decision**: Use standard data interchange formats (e.g., JSON, XML) and RESTful APIs for integration.
+- **Decision**: Use Apache Camel Integration Hub Pattern with standard data interchange formats (e.g., JSON, XML) and RESTful APIs for integration over the Apache Camel Routes.
 - **Rationale**: Promotes compatibility and ease of use with diverse HR systems.
 
 #### 1.2 API
@@ -52,7 +52,7 @@ Let’s dive deeper into the **Integration Use Cases** for the DEI Consultant pl
 
 #### 1.5 Components Involved
 - **API Gateway**
-- **Integration Layer**
+- **Integration Layer( Apache Camel)**
 - **Employee Database**
 
 #### 1.6 Storage Estimation
@@ -71,7 +71,7 @@ Let’s dive deeper into the **Integration Use Cases** for the DEI Consultant pl
 ### 2. Use Case: API for External Services
 
 #### 2.1 ADR
-- **Decision**: Develop a public API for third-party services.
+- **Decision**: Apache Camel Integration Hub Pattern with Routes for external services with Public APIs.
 - **Rationale**: Enhances the platform's ecosystem and provides more value to users.
 
 #### 2.2 API
@@ -101,7 +101,7 @@ Let’s dive deeper into the **Integration Use Cases** for the DEI Consultant pl
 
 #### 2.5 Components Involved
 - **API Gateway**
-- **Integration Layer**
+- **Integration Layer(Apache Camel)**
 - **Data Services** (e.g., Employee, Feedback, etc.)
 
 #### 2.6 Storage Estimation
