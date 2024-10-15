@@ -3,6 +3,7 @@ Here's an in-depth exploration of **Candidate Management Use Cases**, detailing 
 **Disclaimer**:  A portion of the flow is depicted in the diagram on these pages, which is a draft copy. The MainReadme Page contains the whole diagram. Design: [Architecture](https://github.com/bindubc/ClearViewSystem/blob/main/C4/Component%20Diagram.md)
 
 ### **Candidate Management Use Cases Deep Dive**
+![image](https://github.com/user-attachments/assets/e35aa68e-d6a6-4b51-87f4-c8e0ad3e56a2)
 
 ---
 
