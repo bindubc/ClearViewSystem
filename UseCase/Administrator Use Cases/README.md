@@ -8,6 +8,9 @@ Let’s dive deeper into the Administrator Use Cases for the DEI Consultant plat
 4. **Audit Trail Monitoring**: Admins monitor audit trails of system changes and activities.
 5. **Manage Feedback**: Admins review and respond to feedback from consultants and employers.
 
+![image](https://github.com/user-attachments/assets/68e779c7-6c14-4ee9-b566-350e643f3710)
+
+
 ---
 
 ### 1. Use Case: User Management
