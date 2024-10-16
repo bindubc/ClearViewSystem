@@ -80,6 +80,7 @@ The problem presented revolves around creating a more inclusive and unbiased hir
 * __Ineffective ATS__: Traditional applicant tracking systems often redundantly fail to match viable candidates to job descriptions, resulting in missed opportunities and inefficient hiring.
 
 <div id="business"></div>
+
 ### Business UseCase
 Here are a few **business use cases** for a system like ClearView:
 
