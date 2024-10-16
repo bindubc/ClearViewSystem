@@ -12,26 +12,52 @@ This repository contains team's submission to O'Reilly's [Architectural Katas: F
 - Sonali Singh   &emsp;&emsp;&emsp;&emsp;<img src="https://cdn3.iconfinder.com/data/icons/free-social-icons/67/linkedin_circle_color-1024.png" alt="drawing" width="20"/> [LinkedIn](https://www.linkedin.com/in/sonali-singh-219041118/?originalSubdomain=in )
 - Mayur Rajwani  &emsp;&emsp;&emsp;<img src="https://cdn3.iconfinder.com/data/icons/free-social-icons/67/linkedin_circle_color-1024.png" alt="drawing" width="20"/> [LinkedIn](https://www.linkedin.com/in/bindu-c-a95b1377/) 
 
-## Structure
+## Index
 
-- [Introduction](#Introduction)
-- [Problem Overview](#ClearView)
-- [ClearView Functional Requirement](#Requirements)
-- [Usecase](https://github.com/bindubc/ClearViewSystem/tree/main/UseCase)
-- [UserJourney](https://github.com/bindubc/ClearViewSystem/blob/main/UserJourney.md)
-- [Scrutinizing Component](#ComponentAnalysis)
-- [Deployment](https://github.com/bindubc/ClearViewSystem/blob/main/deployment.md)
-- [System Design and Component Analysis](https://github.com/bindubc/ClearViewSystem/tree/main/Component%20Analysis)
-- [Architectiure NonFunctional](#characteristics)
-- [Architecture Challenges](https://github.com/bindubc/ClearViewSystem/blob/main/ArchitectureCharacteristics/Challenges.md)
-- [Architectiure Characteritics and Functional Requirement Anaalysis](https://github.com/bindubc/ClearViewSystem/tree/main/ArchitectureCharacteristics)
-- [API](https://github.com/bindubc/ClearViewSystem/tree/main/API)
-- [C4 Models](https://github.com/bindubc/ClearViewSystem/tree/main/C4)
-- [ADR](https://github.com/bindubc/ClearViewSystem/tree/main/ADR)
-- [Fitness Function](https://github.com/bindubc/ClearViewSystem/tree/main/Fitness%20Function)
-- [Storage Estimation](https://github.com/bindubc/ClearViewSystem/tree/main/Storage)
-- [Coding Strategy](https://github.com/bindubc/ClearViewSystem/tree/main/Coding%20Strategy)
+Here's a categorized index based on the content you've provided:
+
+__Video__: [System Design Explanation](https://drive.google.com/file/d/1DVPQZntFyxFbdJqTcmRJ4l4_xdmvLp7U/view)
+
+###   **Introduction and Overview**
+   - [Introduction](#Introduction)
+   - [Problem Overview](#ClearView) 
+   - [ClearView Functional Requirement](#Requirements)
+   - [Architectiure NonFunctional Requirement](#characteristics)
+
+###  **Use Cases and User Journey**
+   - [Usecase](https://github.com/bindubc/ClearViewSystem/tree/main/UseCase)
+   - [UserJourney](https://github.com/bindubc/ClearViewSystem/blob/main/UserJourney.md)
+   
+
+###  **System Design and Architecture**
+   - [Scrutinizing Component](#ComponentAnalysis)
+   - [Deployment](https://github.com/bindubc/ClearViewSystem/blob/main/deployment.md)
+   - [System Design and Component Analysis](https://github.com/bindubc/ClearViewSystem/tree/main/Component%20Analysis)
+   - [API](https://github.com/bindubc/ClearViewSystem/tree/main/API)
+   - [C4 Models](https://github.com/bindubc/ClearViewSystem/tree/main/C4)
+   - [ADR](https://github.com/bindubc/ClearViewSystem/tree/main/ADR)
+   - [Architecture Challenges](https://github.com/bindubc/ClearViewSystem/blob/main/ArchitectureCharacteristics/Challenges.md)
+   - [Architectiure Characteritics and Functional Requirement Anaalysis](https://github.com/bindubc/ClearViewSystem/tree/main/ArchitectureCharacteristics)
   
+
+### **Technical Considerations**
+   - [Fitness Function](https://github.com/bindubc/ClearViewSystem/tree/main/Fitness%20Function)
+   - [Storage Estimation](https://github.com/bindubc/ClearViewSystem/tree/main/Storage)
+   - [Coding Strategy](https://github.com/bindubc/ClearViewSystem/tree/main/Coding%20Strategy)
+   - [Algorithm](https://github.com/bindubc/ClearViewSystem/blob/main/Component%20Analysis/algorthim.md)
+   - [DB Schema](https://github.com/bindubc/ClearViewSystem/blob/main/Storage/DB%20Schema.md)
+
+### **Architecture Views**
+   * [__Context View__](https://github.com/bindubc/ClearViewSystem/blob/main/C4/ContextDiagram.md)
+   * [__Container View__](https://github.com/bindubc/ClearViewSystem/blob/main/C4/Container.md)
+   * [__component View__](https://github.com/bindubc/ClearViewSystem/blob/main/C4/Component%20Diagram.md)
+
+
+### **Deployment and System Configuration**
+   - [Deployment](https://github.com/bindubc/ClearViewSystem/blob/main/deployment.md)
+   - [System Design Explanation]([https://github.com/bindubc/ClearViewSystem/blob/main/images/SystemDesign.mp4](https://drive.google.com/file/d/1DVPQZntFyxFbdJqTcmRJ4l4_xdmvLp7U/view?usp=sharing))
+   - [System Design](https://github.com/bindubc/ClearViewSystem/blob/main/images/SystemDesign.mp4)
+     
   
 
 <div id="Introduction"></div>
