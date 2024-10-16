@@ -25,8 +25,9 @@ __Glimpse of Project__: [System Design Explanation](https://drive.google.com/fil
    - [Architectiure NonFunctional Requirement](#characteristics)
 
 - [__Use Cases and User Journey__]()
-   - [Usecase](https://github.com/bindubc/ClearViewSystem/tree/main/UseCase)
-   - [UserJourney](https://github.com/bindubc/ClearViewSystem/blob/main/UserJourney.md)
+   - [Business Usecase](#business)
+   - [System Usecase](https://github.com/bindubc/ClearViewSystem/tree/main/UseCase)
+   - [User Journey](https://github.com/bindubc/ClearViewSystem/blob/main/UserJourney.md)
    
 
 - [__System Design and Architecture__]()
