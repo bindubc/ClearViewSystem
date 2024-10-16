@@ -24,6 +24,7 @@ When integrating with **Workday** as an external Applicant Tracking System (ATS)
 - **Programming Language**: Python or Node.js.
 - **Framework**: Flask or Express.js for RESTful APIs.
 - **Message Queue**: RabbitMQ or Apache Kafka for asynchronous processing.
+- **Integration Hub**: Apache Camel
 - **Database**: SQL (PostgreSQL or MySQL) or NoSQL (MongoDB) for storage.
 
 ### Database Schema for Workday Integration

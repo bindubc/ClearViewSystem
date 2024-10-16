@@ -8,7 +8,7 @@ This repository contains team's submission to O'Reilly's [Architectural Katas: F
 ## Team
 
 - Bindu B C         &emsp;&emsp;&emsp;&emsp;&emsp;<img src="https://cdn3.iconfinder.com/data/icons/free-social-icons/67/linkedin_circle_color-1024.png" alt="drawing" width="20"/> [LinkedIn](https://www.linkedin.com/in/bindu-c-a95b1377/)
--  Gopi  Kumar       &emsp;&emsp;&emsp;&emsp;<img src="https://cdn3.iconfinder.com/data/icons/free-social-icons/67/linkedin_circle_color-1024.png" alt="drawing" width="20"/> [LinkedIn](https://www.linkedin.com/in/bindu-c-a95b1377/)
+-  Gopi  Kumar       &emsp;&emsp;&emsp;&emsp;<img src="https://cdn3.iconfinder.com/data/icons/free-social-icons/67/linkedin_circle_color-1024.png" alt="drawing" width="20"/> [LinkedIn](https://www.linkedin.com/in/kumar91gopi/)
 - Sonali Singh   &emsp;&emsp;&emsp;&emsp;<img src="https://cdn3.iconfinder.com/data/icons/free-social-icons/67/linkedin_circle_color-1024.png" alt="drawing" width="20"/> [LinkedIn](https://www.linkedin.com/in/sonali-singh-219041118/?originalSubdomain=in )
 - Mayur Rajwani  &emsp;&emsp;&emsp;<img src="https://cdn3.iconfinder.com/data/icons/free-social-icons/67/linkedin_circle_color-1024.png" alt="drawing" width="20"/> [LinkedIn](https://www.linkedin.com/in/bindu-c-a95b1377/) 
 

@@ -16,15 +16,16 @@ To understand how external systems connect with ClearView, we can break it down 
    - **Message Queues**: Systems like RabbitMQ or Kafka can be used for asynchronous communication, allowing for decoupled integration and reliable message delivery.
 
 3. **Data Flow**:
+   - **Integration Hub**: Apache Camel will act as adaptor between incoming and outgoing data. Camel routes will be utilized for routing various data formats and data.
    - **Incoming Data**: When a candidate applies for a job, data is sent from the external ATS to ClearView's **Application Management Service**. This could include resumes, cover letters, and candidate details.
    - **Outgoing Data**: ClearView may send notifications, analytics, and reports back to external systems for compliance, tracking, or operational purposes.
 
-4. **Database Interaction**:
+5. **Database Interaction**:
    - ClearView stores incoming data in its own database (e.g., PostgreSQL, MongoDB) and may cache certain data for performance.
    - For analytics, ClearView may aggregate data in a separate data warehouse for reporting purposes.
 
-5. **Data Mapping and Transformation**:
-   - Data received from external systems may require mapping and transformation to fit ClearView’s internal data schema. This can be handled by a dedicated service or microservice responsible for data integration.
+6. **Data Mapping and Transformation**:
+   - Data received from external systems may require mapping and transformation to fit ClearView’s internal data schema. This can be handled by a dedicated service or microservice responsible for data integration and Apache Camel.
 
 ### Example Data Flow Scenario
 
