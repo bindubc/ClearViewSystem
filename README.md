@@ -55,7 +55,7 @@ __Video__: [System Design Explanation](https://drive.google.com/file/d/1DVPQZntF
 
 ### **Deployment and System Configuration**
    - [Deployment](https://github.com/bindubc/ClearViewSystem/blob/main/deployment.md)
-   - [System Design Explanation]([https://github.com/bindubc/ClearViewSystem/blob/main/images/SystemDesign.mp4](https://drive.google.com/file/d/1DVPQZntFyxFbdJqTcmRJ4l4_xdmvLp7U/view?usp=sharing))
+   - [System Design Explanation](https://drive.google.com/file/d/1DVPQZntFyxFbdJqTcmRJ4l4_xdmvLp7U/view)
    - [System Design](https://github.com/bindubc/ClearViewSystem/blob/main/images/SystemDesign.mp4)
      
   
