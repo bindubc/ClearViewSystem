@@ -55,7 +55,7 @@ __Glimpse of Project__: [System Design Explanation](https://drive.google.com/fil
 
 - [__Deployment and System Configuration__]()
    - [Deployment](https://github.com/bindubc/ClearViewSystem/blob/main/deployment.md)
-   - [System Design Explanation](https://drive.google.com/file/d/1DVPQZntFyxFbdJqTcmRJ4l4_xdmvLp7U/view)
+   - [Glipmse of Overall System](https://drive.google.com/file/d/1DVPQZntFyxFbdJqTcmRJ4l4_xdmvLp7U/view)
    - [System Design](https://github.com/bindubc/ClearViewSystem/blob/main/images/SystemDesign.mp4)
      
   
