@@ -8,7 +8,7 @@
    - **Options**:
      - **OAuth2**: Widely used, secure, allows third-party access.
      - **JWT (JSON Web Tokens)**: Stateless but requires careful management of token expiration and revocation.
-   - **Decision**: TBD (awaiting further team input).
+   - **Decision**: OAuth.
    - **Implications**: Impact on overall security posture and user experience.
    - **Failover Strategy**: Implement refresh tokens and secure storage of tokens to ensure availability and session continuity.
    - **Resolution for Issues**: Regular security audits and updates to the authentication mechanisms.
