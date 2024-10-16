@@ -18,18 +18,18 @@ Here's a categorized index based on the content you've provided:
 
 __Video__: [System Design Explanation](https://drive.google.com/file/d/1DVPQZntFyxFbdJqTcmRJ4l4_xdmvLp7U/view)
 
-###   **Introduction and Overview**
+- [__Introduction and Overview__]()
    - [Introduction](#Introduction)
    - [Problem Overview](#ClearView) 
    - [ClearView Functional Requirement](#Requirements)
    - [Architectiure NonFunctional Requirement](#characteristics)
 
-###  **Use Cases and User Journey**
+- [__Use Cases and User Journey__]()
    - [Usecase](https://github.com/bindubc/ClearViewSystem/tree/main/UseCase)
    - [UserJourney](https://github.com/bindubc/ClearViewSystem/blob/main/UserJourney.md)
    
 
-###  **System Design and Architecture**
+- [__System Design and Architecture__]()
    - [Scrutinizing Component](#ComponentAnalysis)
    - [Deployment](https://github.com/bindubc/ClearViewSystem/blob/main/deployment.md)
    - [System Design and Component Analysis](https://github.com/bindubc/ClearViewSystem/tree/main/Component%20Analysis)
@@ -40,20 +40,20 @@ __Video__: [System Design Explanation](https://drive.google.com/file/d/1DVPQZntF
    - [Architectiure Characteritics and Functional Requirement Anaalysis](https://github.com/bindubc/ClearViewSystem/tree/main/ArchitectureCharacteristics)
   
 
-### **Technical Considerations**
+- [__Technical Considerations__]()
    - [Fitness Function](https://github.com/bindubc/ClearViewSystem/tree/main/Fitness%20Function)
    - [Storage Estimation](https://github.com/bindubc/ClearViewSystem/tree/main/Storage)
    - [Coding Strategy](https://github.com/bindubc/ClearViewSystem/tree/main/Coding%20Strategy)
    - [Algorithm](https://github.com/bindubc/ClearViewSystem/blob/main/Component%20Analysis/algorthim.md)
    - [DB Schema](https://github.com/bindubc/ClearViewSystem/blob/main/Storage/DB%20Schema.md)
 
-### **Architecture Views**
-   * [__Context View__](https://github.com/bindubc/ClearViewSystem/blob/main/C4/ContextDiagram.md)
-   * [__Container View__](https://github.com/bindubc/ClearViewSystem/blob/main/C4/Container.md)
-   * [__component View__](https://github.com/bindubc/ClearViewSystem/blob/main/C4/Component%20Diagram.md)
+- [__Architecture Views__]()
+   * [Context View](https://github.com/bindubc/ClearViewSystem/blob/main/C4/ContextDiagram.md)
+   * [Container View(https://github.com/bindubc/ClearViewSystem/blob/main/C4/Container.md)
+   * [component View](https://github.com/bindubc/ClearViewSystem/blob/main/C4/Component%20Diagram.md)
 
 
-### **Deployment and System Configuration**
+- [__Deployment and System Configuration__]()
    - [Deployment](https://github.com/bindubc/ClearViewSystem/blob/main/deployment.md)
    - [System Design Explanation](https://drive.google.com/file/d/1DVPQZntFyxFbdJqTcmRJ4l4_xdmvLp7U/view)
    - [System Design](https://github.com/bindubc/ClearViewSystem/blob/main/images/SystemDesign.mp4)
