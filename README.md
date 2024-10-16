@@ -107,7 +107,8 @@ These components form a cohesive architecture for the ClearView platform, enabli
 * __Administrators__: Platform managers responsible for user registrations, maintaining data analytics, and assisting in bias-reduction strategies for executives.
 
 
-![image](https://github.com/user-attachments/assets/eb99a1ba-c2af-4cb1-a473-f88ae0bab0e6)
+
+![image](https://github.com/user-attachments/assets/0ce882b6-9442-4df1-93ec-24347e0cea26)
 
 
 #####  User Management Components
@@ -217,6 +218,8 @@ These architectural characteristics are essential for ensuring that the ClearVie
   * [__Deployment__](https://github.com/bindubc/ClearViewSystem/blob/main/deployment.md)
 
    ## System Design
+
+  ![image](https://github.com/bindubc/ClearViewSystem/blob/main/images/SystemDesign.mp4)
   
   ![image](https://github.com/user-attachments/assets/8f4dc98e-fcd0-478b-aa32-f2463c7c472e)
 
