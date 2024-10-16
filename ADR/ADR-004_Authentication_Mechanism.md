@@ -1,5 +1,5 @@
 4. **ADR-004: Authentication Mechanism**
-   - **Status**: Draft
+   - **Status**: Decided
    - **Context**: Requirement for secure user authentication and authorization.
    - **Evaluation Criteria**: 
      - **Security**: Protection against unauthorized access and data breaches.
