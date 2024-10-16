@@ -219,8 +219,11 @@ These architectural characteristics are essential for ensuring that the ClearVie
 
    ## System Design
 
-  ![image](https://github.com/bindubc/ClearViewSystem/blob/main/images/SystemDesign.mp4)
-  
+   Link: https://github.com/bindubc/ClearViewSystem/blob/main/images/SystemDesign.mp4
+
+  <video src="https://github.com/bindubc/ClearViewSystem/blob/main/images/SystemDesign.mp4" controls="controls" style="max-width: 730px;"></video>
+
+
   ![image](https://github.com/user-attachments/assets/8f4dc98e-fcd0-478b-aa32-f2463c7c472e)
 
 
