@@ -49,7 +49,7 @@ __Video__: [System Design Explanation](https://drive.google.com/file/d/1DVPQZntF
 
 - [__Architecture Views__]()
    * [Context View](https://github.com/bindubc/ClearViewSystem/blob/main/C4/ContextDiagram.md)
-   * [Container View(https://github.com/bindubc/ClearViewSystem/blob/main/C4/Container.md)
+   * [Container View](https://github.com/bindubc/ClearViewSystem/blob/main/C4/Container.md)
    * [component View](https://github.com/bindubc/ClearViewSystem/blob/main/C4/Component%20Diagram.md)
 
 
